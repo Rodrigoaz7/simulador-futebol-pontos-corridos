@@ -1,0 +1,82 @@
+[
+    {
+        "nome": "Flamengo",
+        "sigla": "FLA"
+    },
+    {
+        "nome": "Palmeiras",
+        "sigla": "PAL"
+    },
+    {
+        "nome": "Corinthians",
+        "sigla": "COR"
+    },
+    {
+        "nome": "Atlético-GO",
+        "sigla": "AGO"
+    },
+    {
+        "nome": "São Paulo",
+        "sigla": "SPC"
+    },
+    {
+        "nome": "Fluminense",
+        "sigla": "FLU"
+    },
+    {
+        "nome": "Atlético-MG",
+        "sigla": "ATG"
+    },
+    {
+        "nome": "Fortaleza",
+        "sigla": "FOR"
+    },
+    {
+        "nome": "Internacional",
+        "sigla": "INT"
+    },
+    {
+        "nome": "Sport Recife",
+        "sigla": "SPT"
+    },
+    {
+        "nome": "Ceará",
+        "sigla": "CEA"
+    },
+    {
+        "nome": "Grêmio",
+        "sigla": "GRE"
+    },
+    {
+        "nome": "Bahia",
+        "sigla": "BAH"
+    },
+    {
+        "nome": "Santos",
+        "sigla": "SAN"
+    },
+    {
+        "nome": "Athletico",
+        "sigla": "ATH"
+    },
+    {
+        "nome": "América-MG",
+        "sigla": "AMG"
+    },
+    {
+        "nome": "Chapecoense",
+        "sigla": "CHA"
+    },
+    {
+        "nome": "Red Bull Bragantino",
+        "sigla": "RDB"
+    },
+    {
+        "nome": "Cuiabá",
+        "sigla": "CUI"
+    },
+    {
+        "nome": "Juventude",
+        "sigla": "JUV"
+    }
+]
