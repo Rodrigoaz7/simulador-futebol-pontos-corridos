@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Simulador Campeonato Brasileiro Série A 2021</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='js/main.js'></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+        #table th {text-align: center;}
+        #table td {text-align: center;}
+        .list-group-item {text-align: center !important;}
+        .inputPlacar {display: inline !important; width: 3em;}
+    </style>
+
+    <script>
+        window.onload = function() {
+            const rodadaAtual =  <%= rodadaAtual %>;
+            localStorage.setItem("times", JSON.stringify([<%- times %>]));
+            localStorage.setItem("rodadas", JSON.stringify([<%- rodadas %>]));
+            localStorage.setItem("rodadaAtual", rodadaAtual)
+            atualizarLinksNavegacao();
+        };       
+    </script>
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-light bg-light mb-2">
+            <span class="navbar-brand mb-0 h">
+                <h1>Simulador Campeonato Brasileiro Série A 2021</h1>
+            </span>
+        </nav>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <table class="table table-hover table-bordered" id="table">
+                    <thead>
+                      <tr>
+                        <th>Classificação</th>
+                        <th>P</th>
+                        <th>J</th>
+                        <th>V</th>
+                        <th>E</th>
+                        <th>D</th>
+                        <th>GP</th>
+                        <th>GC</th>
+                        <th>SG</th>
+                        <th>%</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <nav class="navbar navbar-light bg-light">
+                    <span class="navbar-brand mb-0 h" id="linkVoltar">
+                        
+                    </span>
+                    <span id="textoRodada" class="navbar-brand mb-0 h">               
+                        
+                    </span>
+                    <span class="navbar-brand mb-0 h" id="linkAvancar">
+
+                    </span>
+                </nav>
+
+                <ul class="list-group list-group-flush">
+                    
+                        <li class="list-group-item">
+                            <span class="navbar-brand mb-0 h">
+
+                                <input type="number" class="form-control inputPlacar" min="0" max="99"/>
+                            </span>
+                            <span class="navbar-brand mb-0 h">               
+                                x 
+                            </span>
+                            <span class="navbar-brand mb-0 h">
+                                <input type="number" class="form-control inputPlacar" min="0" max="99"/>
+
+                            </span> 
+                        </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
