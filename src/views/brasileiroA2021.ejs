@@ -46,6 +46,8 @@
             localStorage.setItem("rodadas", JSON.stringify([<%- rodadas %>]));
             localStorage.setItem("rodadaAtual", rodadaAtual)
             atualizarLinksNavegacao();
+            atualizarTabela();
+            atualizarRodada();
         };       
     </script>
 
@@ -73,7 +75,7 @@
                         <th>%</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbodyTabelaClassificacao">
                         
                     </tbody>
                 </table>
@@ -91,21 +93,21 @@
                     </span>
                 </nav>
 
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" id="listaRodadas">
                     
-                        <li class="list-group-item">
-                            <span class="navbar-brand mb-0 h">
-
-                                <input type="number" class="form-control inputPlacar" min="0" max="99"/>
-                            </span>
-                            <span class="navbar-brand mb-0 h">               
-                                x 
-                            </span>
-                            <span class="navbar-brand mb-0 h">
-                                <input type="number" class="form-control inputPlacar" min="0" max="99"/>
-
-                            </span> 
-                        </li>
+                    <!-- <li class="list-group-item" style="display: inline-flex;">
+                        <span class="navbar-brand mb-0 h" style="width: 45% !important; text-align: right;">
+                            <span>Flamengo</span>
+                            <span><input type="number" class="form-control inputPlacar" min="0" max="99"/></span>
+                        </span>
+                        <span class="navbar-brand mb-0 h">               
+                            x 
+                        </span>
+                        <span class="navbar-brand mb-0 h" style="width: 45% !important; text-align: left;">
+                            <span><input type="number" class="form-control inputPlacar" min="0" max="99"/></span>
+                            <span>Red Bull Bragantino</span>
+                        </span> 
+                    </li> -->
 
                 </ul>
 
