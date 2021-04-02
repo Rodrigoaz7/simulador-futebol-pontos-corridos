@@ -78,39 +78,44 @@ function atualizarRodada() {
     $('#listaRodadas').empty();
 
     rodada.partidas.forEach((partida, index) => {
-        let li = $('<li>').addClass('list-group-item').css("display", "inline-flex");
+        let li = $('<li>').addClass('list-group-item').css("display", "flex");
 
-        let spanCasa = $('<span>').addClass('navbar-brand mb-0 h').css({"width": "45%", "text-align": "right"});
-        let spanCasaTime = $('<div>').text(partida.time_casa);
-        let spanCasaInput = $('<div>');
+        let spanCasa = $('<span>').addClass('placarMandante').css({"width": "45%", "text-align": "right"});
+        let spanCasaTime = $('<div>').text(partida.time_casa).addClass("placarMandante").css({"margin-right": "10%"});
+        let spanCasaInput = $('<div>').css({"float": "right"});
 
+        let imgIcone = $('<img>').attr({"src": partida.time_casa + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
         let inputCasa = $('<input>')
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_casa", 
                 "name": partida.time_casa + "_" + partida.time_visitante, 
                 "onchange": "atualizarPartida(event);", "value": partida.gols_time_casa})
             .addClass('form-control inputPlacar');
-            
+        
+        spanCasaTime.append(imgIcone);
         spanCasaInput.append(inputCasa);
         spanCasa.append(spanCasaTime);
         spanCasa.append(spanCasaInput);
         li.append(spanCasa);
 
-        let spanX = $('<span>').addClass('navbar-brand mb-0 h').text("x");
+        let spanX = $('<span>').addClass('placarX').text("x");
         li.append(spanX);
 
-        let spanVisitante = $('<span>').addClass('navbar-brand mb-0 h').css({"width": "45%", "text-align": "left"});
-        let spanVisitanteTime = $('<div>').text(partida.time_visitante);
-        let spanVisitanteInput = $('<div>');
+        let spanVisitante = $('<span>').addClass('placarVisitante').css({"width": "45%", "text-align": "left"});
+        let spanVisitanteTime = $('<div>').text(partida.time_visitante).addClass("placarVisitante").css({"margin-left": "10%"});
+        let spanVisitanteInput = $('<div>').css({"float": "left"});
 
+        let imgIconeVisitante = $('<img>').attr({"src": partida.time_visitante + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
         let inputVisitante = $('<input>')
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_visitante", 
                 "name": partida.time_casa + "_" + partida.time_visitante, 
                 "onchange": "atualizarPartida(event);", "value": partida.gols_time_visitante})
             .addClass('form-control inputPlacar');
         
-        spanVisitanteInput.append(inputVisitante);
-        spanVisitante.append(spanVisitanteTime);
+        spanVisitante.append(imgIconeVisitante);
+        spanVisitante.append(inputVisitante);
         spanVisitante.append(spanVisitanteInput);
+        spanVisitante.append(imgIconeVisitante);
+        spanVisitante.append(spanVisitanteTime);
         li.append(spanVisitante);
 
         $('#listaRodadas').append(li);
@@ -191,6 +196,10 @@ function atualizarPartida(event) {
         const aproveitamentoVisitante = timeVisitante.pontuacao > 0 ? (timeVisitante.pontuacao / (timeVisitante.n_jogos * 3.0)) * 100.0 : 0;
         timeVisitante.aproveitamento = aproveitamentoVisitante.toFixed(2);
 
+        times.sort(function (a, b) {
+            return b.pontuacao - a.pontuacao || b.n_vitorias - a.n_vitorias || b.saldo_gols - a.saldo_gols || b.gols_pro - a.gols_pro;
+        });
+        
         localStorage.setItem("times", JSON.stringify(times));
         atualizarTabela();
     }
