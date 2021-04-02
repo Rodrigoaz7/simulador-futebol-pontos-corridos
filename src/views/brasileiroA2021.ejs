@@ -36,10 +36,10 @@
         #table th {text-align: center;}
         #table td {text-align: center;}
         .list-group-item {text-align: center !important;}
-        .inputPlacar {display: inline !important; width: 3em;}
+        .inputPlacar {display: inline !important; width: 3em; text-align: center;}
     </style>
 
-    <script>
+    <script>      
         window.onload = function() {
             const rodadaAtual =  <%= rodadaAtual %>;
             localStorage.setItem("times", JSON.stringify([<%- times %>]));
@@ -63,6 +63,7 @@
                 <table class="table table-hover table-bordered" id="table">
                     <thead>
                       <tr>
+                        <th></th>
                         <th>Classificação</th>
                         <th>P</th>
                         <th>J</th>
@@ -76,39 +77,25 @@
                       </tr>
                     </thead>
                     <tbody id="tbodyTabelaClassificacao">
-                        
+                        <!-- tabela de classificação gerada dinamicamente -->
                     </tbody>
                 </table>
             </div>
             <div class="col-lg-4">
                 <nav class="navbar navbar-light bg-light">
                     <span class="navbar-brand mb-0 h" id="linkVoltar">
-                        
+                        <!-- link gerado dinamicamente -->
                     </span>
                     <span id="textoRodada" class="navbar-brand mb-0 h">               
-                        
+                        <!-- Número da rodada gerado dinamicamente -->
                     </span>
                     <span class="navbar-brand mb-0 h" id="linkAvancar">
-
+                        <!-- link gerado dinamicamente -->
                     </span>
                 </nav>
 
                 <ul class="list-group list-group-flush" id="listaRodadas">
-                    
-                    <!-- <li class="list-group-item" style="display: inline-flex;">
-                        <span class="navbar-brand mb-0 h" style="width: 45% !important; text-align: right;">
-                            <span>Flamengo</span>
-                            <span><input type="number" class="form-control inputPlacar" min="0" max="99"/></span>
-                        </span>
-                        <span class="navbar-brand mb-0 h">               
-                            x 
-                        </span>
-                        <span class="navbar-brand mb-0 h" style="width: 45% !important; text-align: left;">
-                            <span><input type="number" class="form-control inputPlacar" min="0" max="99"/></span>
-                            <span>Red Bull Bragantino</span>
-                        </span> 
-                    </li> -->
-
+                    <!-- lista de partidas geradas dinamicamente -->
                 </ul>
 
             </div>
