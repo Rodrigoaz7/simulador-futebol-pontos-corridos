@@ -4,7 +4,7 @@
   "description": "Simulador de campeonato de pontos corridos",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon -e js,ejs",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "rodrigo azevedo",
