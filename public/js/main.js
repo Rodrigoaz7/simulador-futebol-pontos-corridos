@@ -84,7 +84,7 @@ function atualizarRodada() {
         let spanCasaTime = $('<div>').text(partida.time_casa).addClass("placarMandante").css({"margin-right": "10%"});
         let spanCasaInput = $('<div>').css({"float": "right"});
 
-        let imgIcone = $('<img>').attr({"src": partida.time_casa + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
+        let imgIcone = $('<img>').attr({"src": partida.time_casa.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
         let inputCasa = $('<input>')
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_casa", 
                 "name": partida.time_casa + "_" + partida.time_visitante, 
@@ -104,7 +104,7 @@ function atualizarRodada() {
         let spanVisitanteTime = $('<div>').text(partida.time_visitante).addClass("placarVisitante").css({"margin-left": "10%"});
         let spanVisitanteInput = $('<div>').css({"float": "left"});
 
-        let imgIconeVisitante = $('<img>').attr({"src": partida.time_visitante + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
+        let imgIconeVisitante = $('<img>').attr({"src": partida.time_visitante.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
         let inputVisitante = $('<input>')
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_visitante", 
                 "name": partida.time_casa + "_" + partida.time_visitante, 
