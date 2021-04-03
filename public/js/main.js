@@ -11,11 +11,11 @@ function atualizarLinksNavegacao(){
     }
 
     if(rodadaAtual > 1) {
-        $('#linkVoltar').html('<a href="#" onclick="voltarRodada();"><</a>');
+        $('#linkVoltar').html('<a href="#" onclick="voltarRodada();" style="font-weight: bold; font-size: 120%;"><</a>');
     }
 
     if(rodadaAtual < 38) {
-        $('#linkAvancar').html('<a href="#" onclick="passarRodada();">></a>');
+        $('#linkAvancar').html('<a href="#" onclick="passarRodada();" style="font-weight: bold; font-size: 120%;">></a>');
     }
 }
 
