@@ -11,13 +11,36 @@ mongoose.connection.on('error', err => {
     console.log(`🙅 🚫 → ${err.message}`);
 });
 
-require('./src/models/Rodada')
-require('./src/models/Time')
-require('./src/models/Partida')
+require('./src/models/Rodada');
+require('./src/models/Time');
+require('./src/models/Partida');
+require('./src/models/Campeonato');
 
 const Rodada = mongoose.model('Rodada');
 const Time = mongoose.model('Time');
 const Partida = mongoose.model('Partida');
+const Campeonato = mongoose.model('Campeonato');
+
+const cadastrarCampeonato = async () => {
+    
+    const campeonatos = JSON.parse(fs.readFileSync('./database/campeonatos.json', 'utf8'));
+    let instanciasCampeonatos = [];
+
+    campeonatos.map((camp=>{
+        instanciasCampeonatos.push(
+            new Campeonato({nome: camp.nome, codigo: camp.codigo, 
+                ano: camp.ano, rodada_atual: camp.rodada_atual})
+        );
+    }));
+
+    Campeonato.insertMany(instanciasCampeonatos, (err, docs) => {
+        if(err){
+            console.log("Aconteceu um erro na gravação dos campeonatos");
+        }else{
+            console.log(`${docs.length} Campeonatos inseridos com sucesso.`);
+        }
+    });
+}
 
 const cadastrarTimes = async () => {
     
@@ -69,6 +92,7 @@ const cadastrarPartidas = async (numeroRodada, partidas) => {
     await rodada.save();
 }
 
+cadastrarCampeonato();
 cadastrarTimes();
 cadastrarRodadas();
 

@@ -20,7 +20,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="min-width: fit-content;">
 
     <style>
         input::-webkit-outer-spin-button,
@@ -35,7 +35,7 @@
         }
         #table th {text-align: center;}
         #table td {text-align: center;}
-        .list-group-item {text-align: center !important;}
+        .list-group-item {text-align: center !important; padding: 5%;}
         .inputPlacar {display: inline !important; width: 3em; text-align: center;}
         .placarMandante {justify-content: flex-end; display: flex; width: 35%;}
         .placarVisitante {justify-content: flex-start; display: flex; width: 30%;}
@@ -45,10 +45,12 @@
 
     <script>      
         window.onload = function() {
-            const rodadaAtual =  <%= rodadaAtual %>;
+            const campeonato =  <%- campeonato %>;
             localStorage.setItem("times", JSON.stringify([<%- times %>]));
             localStorage.setItem("rodadas", JSON.stringify([<%- rodadas %>]));
-            localStorage.setItem("rodadaAtual", rodadaAtual)
+            localStorage.setItem("rodadaAtual", campeonato.rodada_atual);
+            localStorage.setItem("campeonato", JSON.stringify(campeonato));
+            $('#titulo').text(campeonato.nome + " " + campeonato.ano);
             atualizarLinksNavegacao();
             atualizarTabela();
             atualizarRodada();
@@ -58,7 +60,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-light bg-light mb-2">
             <span class="navbar-brand mb-0 h">
-                <h1>Simulador Campeonato Brasileiro Série A 2021</h1>
+                <h1 id="titulo"><!-- Gerado dinamicamente --></h1>
             </span>
         </nav>
         

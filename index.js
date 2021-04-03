@@ -5,15 +5,16 @@ const controller = require('./src/controller/buscarDadosSimulacao');
 app.get('/', async function(req,res) {
 	const times = await controller.obterTimes();
 	const rodadas = await controller.obterRodadas();
+	const campeonato = await controller.obterCampeonato("BRA2021A");
 
-	res.render("brasileiroA2021", 
+	res.render("simulador", 
 	{
-		rodadaAtual: 1,
+		campeonato: campeonato,
 		times: times,
 		rodadas: rodadas
 	});
 });
 
 app.listen(3000 , () => {
-	console.log("API RUNNING AT PORT 3000")
+	console.log("SIMULADOR RODANDO NA PORTA 3000")
 })
