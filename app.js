@@ -15,6 +15,6 @@ app.get('/', async function(req,res) {
 	});
 });
 
-app.listen(3000 , () => {
-	console.log("SIMULADOR RODANDO NA PORTA 3000")
+app.listen(8080 , () => {
+	console.log("SIMULADOR RODANDO NA PORTA 8080")
 })
