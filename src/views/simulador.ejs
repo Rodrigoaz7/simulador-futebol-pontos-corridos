@@ -46,7 +46,11 @@
     <script>      
         window.onload = function() {
             const campeonato =  <%- campeonato %>;
-            localStorage.setItem("times", JSON.stringify([<%- times %>]));
+            let times = [<%- times %>];
+            times.sort(function (a, b) {
+                return b.pontuacao - a.pontuacao || b.n_vitorias - a.n_vitorias || b.saldo_gols - a.saldo_gols || b.gols_pro - a.gols_pro;
+            });
+            localStorage.setItem("times", JSON.stringify(times));
             localStorage.setItem("rodadas", JSON.stringify([<%- rodadas %>]));
             localStorage.setItem("rodadaAtual", campeonato.rodada_atual);
             localStorage.setItem("campeonato", JSON.stringify(campeonato));
