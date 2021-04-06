@@ -130,6 +130,53 @@ function atualizarPartida(event) {
     const mandante = event.target.id.split("_")[1];
     const nomeTimes = event.target.name.split("_");
 
+    var partidaAtual = rodadas[rodadaAtual-1].partidas[id-1];
+
+    // Caso a partida já tenha sido preenchida anteriormente, os dados dela terão de ser removidos
+    if(partidaAtual.gols_time_visitante != null && partidaAtual.gols_time_casa != null) {
+        let times = JSON.parse(localStorage.getItem("times"));
+        let equipeMandante = times.filter(el => {
+            return el.nome == nomeTimes[0]
+        })[0];
+        let equipeVisitante = times.filter(el => {
+            return el.nome == nomeTimes[1]
+        })[0];
+
+        equipeMandante.gols_pro -= partidaAtual.gols_time_casa;
+        equipeMandante.gols_contra -= partidaAtual.gols_time_visitante;
+        equipeMandante.saldo_gols -= (partidaAtual.gols_time_casa - partidaAtual.gols_time_visitante);
+        equipeVisitante.gols_pro -= partidaAtual.gols_time_visitante;
+        equipeVisitante.gols_contra -= partidaAtual.gols_time_casa;
+        equipeVisitante.saldo_gols -= (partidaAtual.gols_time_visitante - partidaAtual.gols_time_casa);
+
+        if(partidaAtual.gols_time_casa > partidaAtual.gols_time_visitante) {
+            equipeMandante.n_vitorias -= 1;
+            equipeMandante.n_jogos -= 1;
+            equipeMandante.pontuacao -= 3;
+            equipeVisitante.n_jogos -= 1;
+            equipeVisitante.n_derrotas -= 1;
+        }
+
+        if(partidaAtual.gols_time_casa < partidaAtual.gols_time_visitante) {
+            equipeVisitante.n_vitorias -= 1;
+            equipeVisitante.n_jogos -= 1;
+            equipeVisitante.pontuacao -= 3;
+            equipeMandante.n_jogos -= 1;
+            equipeMandante.n_derrotas -= 1;
+        }
+
+        if(partidaAtual.gols_time_casa == partidaAtual.gols_time_visitante) {
+            equipeVisitante.n_empates -= 1;
+            equipeVisitante.n_jogos -= 1;
+            equipeVisitante.pontuacao -= 1;
+            equipeMandante.n_empates -= 1;
+            equipeMandante.n_jogos -= 1;
+            equipeMandante.pontuacao -= 1;
+        }
+
+        localStorage.setItem("times", JSON.stringify(times));
+    }
+
     if(mandante == "casa") {
         rodadas[rodadaAtual-1].partidas[id-1].gols_time_casa = event.target.value; 
     }
@@ -139,7 +186,7 @@ function atualizarPartida(event) {
     }
     
     localStorage.setItem("rodadas", JSON.stringify(rodadas));
-    const partidaAtual = rodadas[rodadaAtual-1].partidas[id-1];
+    partidaAtual = rodadas[rodadaAtual-1].partidas[id-1];
 
     if(partidaAtual.gols_time_visitante != null && partidaAtual.gols_time_casa != null) {
         let times = JSON.parse(localStorage.getItem("times"));
