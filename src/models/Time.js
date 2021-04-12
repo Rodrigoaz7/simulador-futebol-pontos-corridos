@@ -7,7 +7,6 @@ const TimeSchema = new Schema({
       ref: 'Campeonato'
     },
     nome: String,
-    sigla: String, //usada como referencia na collection de partida
     pontuacao:  {
       type: Number,
       default: 0
