@@ -23,26 +23,21 @@ const Campeonato = mongoose.model('Campeonato');
 
 const cadastrarCampeonato = async () => {
 
-    const campeonato = {
-        "nome": "Campeonato Brasileiro Série A",
+    const campeonato = new Campeonato({
+        "nome": "Campeonato Brasileiro Série B",
         "ano": 2021,
-        "codigo": "BRA2021A",
+        "codigo": "BRA2021B",
         "rodada_atual": 1,
         "itens_desempate": "P-NV-SG-GP"
-    };
-
-    await Campeonato.insert(campeonato, (err, docs) => {
-        if(err){
-            console.log("Aconteceu um erro na gravação do campeonato");
-        }else{
-            console.log(`Campeonato inserido com sucesso.`);
-        }
     });
+
+    await campeonato.save()
+    console.log(`Campeonato inserido com sucesso.`);
 }
 
 const cadastrarTimes = async (campeonato) => {
     
-    const times = JSON.parse(fs.readFileSync('./database/times.json', 'utf8'));
+    const times = JSON.parse(fs.readFileSync('./database/timesBrasileiroSerieB2021.json', 'utf8'));
     let instanciasTimes = [];
 
     times.map((time=>{
@@ -74,16 +69,16 @@ const cadastrarRodadaComPartidas = async (campeonato, numeroRodada, partidas) =>
 const cadastrarDados = async () => {
     console.log("Iniciando cadastro de dados ...")
     await cadastrarCampeonato();
-    const campeonato = await Campeonato.findOne({codigo: "BRA2021A"});
+    const campeonato = await Campeonato.findOne({codigo: "BRA2021B"});
     await cadastrarTimes(campeonato);
     
-    const url = 'https://www.goal.com/br/not%C3%ADcias/tabela-do-brasileirao-2021-veja-todos-os-jogos-do-campeonato/ti0dzl8zwfg11rxv636psj9ze';
+    const url = 'https://www.goal.com/br/not%C3%ADcias/brasileirao-serie-b-2021-quando-comeca-times-participantes-e/2dxyt9if2ps112wqy3yj2hp44';
     console.log("iniciando web scraping ... ")
 
     axios(url).then(response => {
         const html = response.data;
         const $ = cheerio.load(html);
-        const listaPartidas = $('.body').find('ul').slice(1);
+        const listaPartidas = $('.body').find('ul').slice(2);
         var partidas = [];
         console.log("HTML capturado ... ")
         console.log("Iniciando insert de partidas ... ")

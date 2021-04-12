@@ -1,0 +1,82 @@
+[
+    {
+        "nome": "Avaí",
+        "sigla": "AVA"
+    },
+    {
+        "nome": "Botafogo",
+        "sigla": "BOT"
+    },
+    {
+        "nome": "Brasil",
+        "sigla": "BRP"
+    },
+    {
+        "nome": "Brusque",
+        "sigla": "BRU"
+    },
+    {
+        "nome": "CRB",
+        "sigla": "CRB"
+    },
+    {
+        "nome": "CSA",
+        "sigla": "CSA"
+    },
+    {
+        "nome": "Confiança",
+        "sigla": "CFN"
+    },
+    {
+        "nome": "Coritiba",
+        "sigla": "COR"
+    },
+    {
+        "nome": "Cruzeiro",
+        "sigla": "CRU"
+    },
+    {
+        "nome": "Goiás",
+        "sigla": "GOI"
+    },
+    {
+        "nome": "Guarani",
+        "sigla": "GUA"
+    },
+    {
+        "nome": "Londrina",
+        "sigla": "LON"
+    },
+    {
+        "nome": "Náutico",
+        "sigla": "NAU"
+    },
+    {
+        "nome": "Operário-PR",
+        "sigla": "OPP"
+    },
+    {
+        "nome": "Ponte Preta",
+        "sigla": "PON"
+    },
+    {
+        "nome": "Remo",
+        "sigla": "REM"
+    },
+    {
+        "nome": "Sampaio Corrêa",
+        "sigla": "SAM"
+    },
+    {
+        "nome": "Vasco",
+        "sigla": "VAS"
+    },
+    {
+        "nome": "Vila Nova",
+        "sigla": "VIN"
+    },
+    {
+        "nome": "Vitória",
+        "sigla": "VIT"
+    }
+]
