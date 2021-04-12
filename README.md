@@ -19,10 +19,10 @@ npm install
 
 ## Uso
 
-Para iniciar o projeto é necessário primeiramente, realizar um processo de carga no banco de dados com os dados dos times e das partidas. O comando é mostrado abaixo.
+Para iniciar o projeto é necessário primeiramente, realizar um processo de carga no banco de dados com os dados dos times e das partidas. O comando para o cadastro dos dados do campeonato brasileiro 2021 série A é mostrado abaixo.
 
 ```bash
-node ./carga.js
+node ./cargaBrasileiro2021A.js
 ```
 
 Após isso, basta rodar o projeto com:

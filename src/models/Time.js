@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TimeSchema = new Schema({
+    campeonato: {
+      type: Schema.Types.ObjectId,
+      ref: 'Campeonato'
+    },
     nome: String,
     sigla: String, //usada como referencia na collection de partida
     pontuacao:  {
