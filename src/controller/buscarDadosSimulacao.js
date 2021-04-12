@@ -8,8 +8,9 @@ const Partida = mongoose.model('Partida');
 const Time = mongoose.model('Time');
 const Campeonato = mongoose.model('Campeonato');
 
-exports.obterTimes = async () => {
-    const times = await Time.find().select('-_id').sort('nome');
+exports.obterTimes = async (codigoCampeonato) => {
+    const campeonato = await Campeonato.findOne({codigo: codigoCampeonato});
+    const times = await Time.find({campeonato: campeonato._id}).select('-_id').select('-campeonato').sort('nome');
     let timesComDadosCompletos = [];
 
     times.forEach(time => {
@@ -22,12 +23,13 @@ exports.obterTimes = async () => {
     return timesComDadosCompletos;
 };
 
-exports.obterRodadas = async () => {
-    return await Rodada.find().select('-_id').sort('numero')
+exports.obterRodadas = async (codigoCampeonato) => {
+    const campeonato = await Campeonato.findOne({codigo: codigoCampeonato});
+    return await Rodada.find({campeonato: campeonato._id}).select('-_id').select('-campeonato').sort('numero')
         .populate({ path: 'partidas', select: '-_id' })
         .exec();
 };
 
-exports.obterCampeonato = async (cod) => {
-    return await Campeonato.findOne({codigo: cod}).select('-_id');
+exports.obterCampeonato = async (codigoCampeonato) => {
+    return await Campeonato.findOne({codigo: codigoCampeonato}).select('-_id');
 };

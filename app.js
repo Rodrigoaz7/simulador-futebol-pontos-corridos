@@ -3,10 +3,10 @@ const app = require('./config/app');
 const controller = require('./src/controller/buscarDadosSimulacao');
 
 app.get('/', async function(req,res) {
-	const times = await controller.obterTimes();
-	const rodadas = await controller.obterRodadas();
 	const campeonato = await controller.obterCampeonato("BRA2021A");
-
+	const times = await controller.obterTimes("BRA2021A");
+	const rodadas = await controller.obterRodadas("BRA2021A");
+	
 	res.render("simulador", 
 	{
 		campeonato: campeonato,

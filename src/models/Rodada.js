@@ -6,7 +6,11 @@ const RodadaSchema = new Schema({
     partidas:[{
         type: Schema.Types.ObjectId,
         ref: 'Partida'
-    }]
+    }],
+    campeonato:{
+        type: Schema.Types.ObjectId,
+        ref: 'Campeonato'
+    },
 });
 
 mongoose.model('Rodada', RodadaSchema);
