@@ -1,6 +1,5 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const fs = require('fs');
 const env = require('dotenv');
 const mongoose = require('mongoose');
 env.config({ path: './env/simulador.env' });
@@ -40,16 +39,8 @@ const cadastrarCampeonato = async () => {
     });
 }
 
-const cadastrarTimes = async (campeonato) => {
-    
-    const times = JSON.parse(fs.readFileSync('./database/times.json', 'utf8'));
-    let instanciasTimes = [];
-
-    times.map((time=>{
-        instanciasTimes.push(new Time({nome: time.nome, sigla: time.sigla, campeonato: campeonato._id}));
-    }));
-
-    await Time.insertMany(instanciasTimes, (err, docs) => {
+const cadastrarTimes = async (times) => {
+    await Time.insertMany(times, (err, docs) => {
         if(err){
             console.log("Aconteceu um erro na gravação dos times");
         }else{
@@ -75,7 +66,6 @@ const cadastrarDados = async () => {
     console.log("Iniciando cadastro de dados ...")
     await cadastrarCampeonato();
     const campeonato = await Campeonato.findOne({codigo: "BRA2021A"});
-    await cadastrarTimes(campeonato);
     
     const url = 'https://www.goal.com/br/not%C3%ADcias/tabela-do-brasileirao-2021-veja-todos-os-jogos-do-campeonato/ti0dzl8zwfg11rxv636psj9ze';
     console.log("iniciando web scraping ... ")
@@ -85,6 +75,7 @@ const cadastrarDados = async () => {
         const $ = cheerio.load(html);
         const listaPartidas = $('.body').find('ul').slice(1);
         var partidas = [];
+        var times = [];
         console.log("HTML capturado ... ")
         console.log("Iniciando insert de partidas ... ")
 
@@ -93,7 +84,6 @@ const cadastrarDados = async () => {
             for(let i = 0; i < 10; i++) {
                 let textoRodada = $(this).find('li')[i].children[0].data.trim();
                 let textoTimes = textoRodada.split(" x ");
-                console.log(textoTimes);
                 partidas.push(
                     new Partida({
                         time_casa: textoTimes[0],
@@ -101,7 +91,24 @@ const cadastrarDados = async () => {
                         rodada: index+1
                     })
                 );
+
+                if(index == 0) {
+                    times.push(
+                        new Time({
+                            nome: textoTimes[0],
+                            campeonato: campeonato._id
+                        })
+                    );
+                    times.push(
+                        new Time({
+                            nome: textoTimes[1],
+                            campeonato: campeonato._id
+                        })
+                    );
+                }
             }
+
+            if(index == 0) cadastrarTimes(times);
             cadastrarRodadaComPartidas(campeonato, index+1, partidas);
             console.log("\n");
         });
