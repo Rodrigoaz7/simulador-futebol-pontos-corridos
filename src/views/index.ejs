@@ -1,27 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Simulador Campeonato Brasileiro Série A 2021</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
+<%- include ('./partials/head') %>
 <body style="min-width: fit-content;">
-
     <div class="container-fluid" style="margin-top: 1rem;">
+        <%- include ('./partials/messages') %>
         <div class="row">
             <div class="col-sm-6">
             <div class="card">
@@ -29,6 +11,9 @@
                 <h5 class="card-title">Campeonato Brasileiro 2021 - Série A</h5>
                 <p class="card-text">Simulador para o Campeonato Brasileiro 2021 - Série A</p>
                 <a href="/brasileirao-serie-a-2021" class="btn btn-primary">Simular</a>
+                <% if(logado) { %>
+                    <a href="/gerenciar?campeonato=BRA2021A" class="btn btn-danger" style="float: right;">Gerenciar</a>
+                <% } %>
                 </div>
             </div>
             </div>
@@ -38,6 +23,9 @@
                     <h5 class="card-title">Campeonato Brasileiro 2021 - Série B</h5>
                     <p class="card-text">Simulador para o Campeonato Brasileiro 2021 - Série B</p>
                     <a href="/brasileirao-serie-b-2021" class="btn btn-primary">Simular</a>
+                    <% if(logado) { %>
+                        <a href="/gerenciar?campeonato=BRA2021A" class="btn btn-danger" style="float: right;">Gerenciar</a>
+                    <% } %>
                     </div>
                 </div>
             </div>
