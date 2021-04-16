@@ -21,6 +21,12 @@ const mongoose = require('mongoose');
 
 const path = require('path');
 
+const flash = require('connect-flash');
+
+const session = require('express-session');
+
+const passport = require("passport");
+
 /* configurar o middleware body-parser */
 app.use(bodyParser.json());
 
@@ -36,11 +42,28 @@ app.use(express.static(path.join(__dirname, "../public")));
 /* Extraindo variaveis de ambiente. */
 env.config({ path: './env/simulador.env' });
 
+require('./passport')(passport)
+
 /* Conecta com o banco de dados e lida com problemas de conexão */
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: false });
 mongoose.Promise = global.Promise; // → Queremos que o mongoose utilize promises ES6
 mongoose.connection.on('error', err => {
     console.log(`🙅 🚫 → ${err.message}`);
+});
+
+app.use(session({
+    secret : 'secret',
+    resave : true,
+    saveUninitialized : true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+app.use((req,res,next)=> {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error  = req.flash('error');
+    next();
 });
 	
 /* exportar o objeto app */

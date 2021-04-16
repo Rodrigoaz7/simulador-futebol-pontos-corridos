@@ -7,6 +7,7 @@ const Rodada = mongoose.model('Rodada');
 const Partida = mongoose.model('Partida');
 const Time = mongoose.model('Time');
 const Campeonato = mongoose.model('Campeonato');
+const ObjectID = require('mongodb').ObjectID;
 
 exports.obterTimes = async (codigoCampeonato) => {
     const campeonato = await Campeonato.findOne({codigo: codigoCampeonato});
@@ -28,6 +29,13 @@ exports.obterRodadas = async (codigoCampeonato) => {
     return await Rodada.find({campeonato: campeonato._id}).select('-_id').select('-campeonato').sort('numero')
         .populate({ path: 'partidas', select: '-_id' })
         .exec();
+};
+
+exports.obterPartidas = async (idRodada) => {
+    const rodada = await Rodada.findById(idRodada)
+        .populate({ path: 'partidas' })
+        .exec();
+    return rodada.partidas;
 };
 
 exports.obterCampeonato = async (codigoCampeonato) => {

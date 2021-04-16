@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<%- include ('./partials/head') %>
+<body style="min-width: fit-content;">
+    <%- include ('./partials/messages') %>
+    <form action="/login" method="POST">
+    <div class="container-fluid" style="margin-top: 1rem;">
+        <div class="row">
+            <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <input type="text" class="form-control" id="username" name="username"  placeholder="username" style="margin-bottom: 1rem;"/>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password"/>
+                    <br/>
+                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </form>
+</body>
+</html>
