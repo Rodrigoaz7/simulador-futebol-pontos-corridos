@@ -1,6 +1,6 @@
 # Simulador de Futebol de Pontos Corridos
 
-O projeto tem por objetivo oferecer um simulador de um campeonato de pontos corridos. Atualmente, existem dois campeonatos implementados para simulação, o [Campeonato Brasileiro Série A 2021](http://simuladorfutebolpontoscorridos-env.eba-y7azpjgm.us-east-2.elasticbeanstalk.com/brasileirao-serie-a-2021) e o [Campeonato Brasileiro Série B 2021](http://simuladorfutebolpontoscorridos-env.eba-y7azpjgm.us-east-2.elasticbeanstalk.com/brasileirao-serie-b-2021).
+O projeto tem por objetivo oferecer um simulador com vários campeonatos de pontos corridos que acontecem no mundo, disponível [aqui](http://simuladorfutebolpontoscorridos-env.eba-y7azpjgm.us-east-2.elasticbeanstalk.com/).
 
 Inicialmente, apenas o campeonato brasileiro série A 2021 está disponível, mas uma generalização para outros campeonatos é possível.
 
