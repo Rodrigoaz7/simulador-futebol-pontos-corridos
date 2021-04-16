@@ -63,13 +63,23 @@ app.get('/gerenciar',ensureAuthenticated, async (req,res)=>{
 app.post('/gerenciar/:campeonatoId',ensureAuthenticated, async (req,res)=>{
 	const dataCampeonato = { nome: req.body.nome, ano: req.body.ano, rodada_atual: req.body.rodada_atual }
 	await controllerCampeonato.atualizarCampeonato(req.params.campeonatoId, dataCampeonato);
-	console.log(req.body)
-	res.redirect("/");
+	const msgErro = await controllerCampeonato.atualizarPartidas(req.params.campeonatoId, req.body)
+	if(msgErro == null) {
+		res.redirect("/");
+	}
+	let dadosCompletos = await controllerCampeonato.getDadosCampeonatoCompleto(req.params.campeonatoId);
+	dadosCompletos.error_msg = msgErro;
+	res.render('gerenciador', dadosCompletos);
 });
 
 app.get('/partidas/:rodadaId', async (req,res)=>{
 	const partidas = await controller.obterPartidas(req.params.rodadaId);
 	res.status(200).json(partidas);
+});
+
+app.get('/logout', function(req, res){
+	req.logout();
+	res.redirect('/');
 });
 
 app.listen(8080 , () => {

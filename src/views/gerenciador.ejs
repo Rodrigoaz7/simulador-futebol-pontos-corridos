@@ -24,6 +24,7 @@
                         let spanCasaTime = $('<div>').text(partida.time_casa).addClass("placarMandante").css({"margin-right": "10%"});
                         let spanCasaInput = $('<div>').css({"float": "right"});
                         let imgIcone = $('<img>').attr({"src": partida.time_casa.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
+                        
                         let inputCasa = $('<input>')
                             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_casa", 
                                 "name": partida.time_casa, 
@@ -69,28 +70,21 @@
     <%- include ('./partials/messages') %>
     <form action="/gerenciar/<%= campeonato._id %>" method="POST">
     <div class="container-fluid" style="margin-top: 1rem;">
-        <div class="row">
-            <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Nome</h5>
-                    <input type="text" class="form-control" id="nome" name="nome"  placeholder="username" value="<%= campeonato.nome %>"/>
-                </div>
-            </div>
-            </div>
+        
+        <div class="card w-100">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5 class="card-title">Nome</h5>
+                        <input type="text" class="form-control" id="nome" name="nome"  placeholder="username" value="<%= campeonato.nome %>"/>
+                    </div>
 
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
+                    <div class="col-sm-4">
                         <h5 class="card-title">Ano</h5>
                         <input type="number" class="form-control" id="ano" name="ano"  placeholder="ano" min="1950" value="<%= campeonato.ano %>"/>
                     </div>
-                </div>
-            </div>
 
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body">
+                    <div class="col-sm-2">
                         <h5 class="card-title">Rodada Atual</h5>
                         <input type="number" min="1" max="38" class="form-control" id="rodadaAtual" name="rodada_atual"  placeholder="rodada atual"  
                             value="<%= campeonato.rodada_atual %>"/>
