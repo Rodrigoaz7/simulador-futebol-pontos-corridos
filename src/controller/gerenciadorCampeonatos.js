@@ -7,15 +7,12 @@ const Time = mongoose.model('Time');
 const Campeonato = mongoose.model('Campeonato');
 const ObjectID = require('mongodb').ObjectID
 
-exports.getDadosCampeonatoCompleto = async (codigoIdCampeonato) => {
-    let campeonato = await Campeonato.findOne({codigo: codigoIdCampeonato});
-    if(campeonato == null) {
-        campeonato = await Campeonato.findById(codigoIdCampeonato);
-        if(campeonato == null) return null;
-    }
+exports.getDadosCampeonatoCompleto = async (campeonatoId) => {
+    const campeonato = await Campeonato.findById(campeonatoId);
+    if(campeonato == null) return null;
 
-    const times = await Time.find({campeonato: campeonato._id}).sort('nome');
-    const rodadas = await Rodada.find({campeonato: campeonato._id}).sort('numero')
+    const times = await Time.find({campeonato: new ObjectID(campeonatoId)}).sort('nome');
+    const rodadas = await Rodada.find({campeonato: new ObjectID(campeonatoId)}).sort('numero')
         .populate({ path: 'partidas' })
         .exec();
 
@@ -29,7 +26,7 @@ exports.atualizarCampeonato = async (campeonatoId, data) => {
 }
 
 exports.atualizarPartidas = async (campeonatoId, data) => {
-    if(data.rodada) {
+    if(data.rodada && data.rodada > 0) {
         const campeonato = await Campeonato.findById(campeonatoId);
         if(campeonato == null) return "Campeonato Não Encontrado";
         let times = await Time.find({campeonato: new ObjectID(campeonatoId)});
@@ -93,9 +90,7 @@ exports.atualizarPartidas = async (campeonatoId, data) => {
                
             }
         });
-
         return null;
     }
-    return "Nenhuma Rodada Foi Selecionada";
-    
+    return null;
 }

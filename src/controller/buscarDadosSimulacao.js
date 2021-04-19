@@ -1,17 +1,14 @@
 const mongoose = require('mongoose');
 require('../models/Rodada')
 require('../models/Time')
-require('../models/Partida')
 require('../models/Campeonato')
+require('../models/Partida')
 const Rodada = mongoose.model('Rodada');
-const Partida = mongoose.model('Partida');
 const Time = mongoose.model('Time');
 const Campeonato = mongoose.model('Campeonato');
-const ObjectID = require('mongodb').ObjectID;
 
-exports.obterTimes = async (codigoCampeonato) => {
-    const campeonato = await Campeonato.findOne({codigo: codigoCampeonato});
-    const times = await Time.find({campeonato: campeonato._id}).select('-_id').select('-campeonato').sort('nome');
+exports.obterTimes = async (campeonatoId) => {
+    const times = await Time.find({campeonato: campeonatoId}).select('-_id').select('-campeonato').sort('nome');
     let timesComDadosCompletos = [];
 
     times.forEach(time => {
@@ -24,20 +21,23 @@ exports.obterTimes = async (codigoCampeonato) => {
     return timesComDadosCompletos;
 };
 
-exports.obterRodadas = async (codigoCampeonato) => {
-    const campeonato = await Campeonato.findOne({codigo: codigoCampeonato});
-    return await Rodada.find({campeonato: campeonato._id}).select('-_id').select('-campeonato').sort('numero')
+exports.obterRodadas = async (campeonatoId) => {
+    return await Rodada.find({campeonato: campeonatoId}).select('-_id').select('-campeonato').sort('numero')
         .populate({ path: 'partidas', select: '-_id' })
         .exec();
 };
 
-exports.obterPartidas = async (idRodada) => {
-    const rodada = await Rodada.findById(idRodada)
+exports.obterPartidas = async (rodadaId) => {
+    const rodada = await Rodada.findById(rodadaId)
         .populate({ path: 'partidas' })
         .exec();
     return rodada.partidas;
 };
 
-exports.obterCampeonato = async (codigoCampeonato) => {
-    return await Campeonato.findOne({codigo: codigoCampeonato}).select('-_id');
+exports.obterCampeonatos = async () => {
+    return await Campeonato.find({});
+};
+
+exports.obterCampeonato = async (campeonatoId) => {
+    return await Campeonato.findById(campeonatoId).select('-_id');
 };
