@@ -4,9 +4,10 @@ const controllerCampeonato = require('./src/controller/gerenciadorCampeonatos');
 const {ensureAuthenticated} = require('./config/auth')
 const passport = require('passport');
 
-app.get('/', function(req,res) {
+app.get('/', async function(req,res) {
 	const isLogado = req.isAuthenticated();
-	res.render("index", {logado: isLogado});
+	const campeonatos = await controller.obterCampeonatos();
+	res.render("index", {campeonatos, logado: isLogado});
 });
 
 app.get('/login', function(req,res) {
@@ -25,23 +26,13 @@ app.post('/login',(req,res,next)=>{
 	})(req,res,next)
 })
 
-app.get('/brasileirao-serie-a-2021', async function(req,res) {
-	const campeonato = await controller.obterCampeonato("BRA2021A");
-	const times = await controller.obterTimes("BRA2021A");
-	const rodadas = await controller.obterRodadas("BRA2021A");
-	
-	res.render("simulador", 
-	{
-		campeonato: campeonato,
-		times: times,
-		rodadas: rodadas
-	});
-});
-
-app.get('/brasileirao-serie-b-2021', async function(req,res) {
-	const campeonato = await controller.obterCampeonato("BRA2021B");
-	const times = await controller.obterTimes("BRA2021B");
-	const rodadas = await controller.obterRodadas("BRA2021B");
+app.get('/simular', async function(req,res) {
+	if(!req.query.campeonatoId) {
+		res.redirect("/")
+	}
+	const campeonato = await controller.obterCampeonato(req.query.campeonatoId);
+	const times = await controller.obterTimes(req.query.campeonatoId);
+	const rodadas = await controller.obterRodadas(req.query.campeonatoId);
 	
 	res.render("simulador", 
 	{
@@ -52,7 +43,10 @@ app.get('/brasileirao-serie-b-2021', async function(req,res) {
 });
 
 app.get('/gerenciar',ensureAuthenticated, async (req,res)=>{
-	const dadosCompletos = await controllerCampeonato.getDadosCampeonatoCompleto(req.query.campeonato);
+	if(!'campeonatoId' in req.query) {
+		res.redirect("/")
+	}
+	const dadosCompletos = await controllerCampeonato.getDadosCampeonatoCompleto(req.query.campeonatoId);
 	if(dadosCompletos != null) {
 		res.render('gerenciador', dadosCompletos);
 	} else {
@@ -68,7 +62,10 @@ app.post('/gerenciar/:campeonatoId',ensureAuthenticated, async (req,res)=>{
 		res.redirect("/");
 	}
 	let dadosCompletos = await controllerCampeonato.getDadosCampeonatoCompleto(req.params.campeonatoId);
-	dadosCompletos.error_msg = msgErro;
+	if(dadosCompletos) {
+		dadosCompletos.error_msg = msgErro;
+	}
+	
 	res.render('gerenciador', dadosCompletos);
 });
 

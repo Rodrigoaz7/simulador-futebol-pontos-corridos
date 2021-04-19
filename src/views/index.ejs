@@ -17,30 +17,20 @@
         <br/>
 
         <div class="row">
-            <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                <h5 class="card-title">Campeonato Brasileiro 2021 - Série A</h5>
-                <p class="card-text">Simulador para o Campeonato Brasileiro 2021 - Série A</p>
-                <a href="/brasileirao-serie-a-2021" class="btn btn-primary">Simular</a>
-                <% if(logado) { %>
-                    <a href="/gerenciar?campeonato=BRA2021A" class="btn btn-danger" style="float: right;">Gerenciar</a>
-                <% } %>
-                </div>
-            </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                    <h5 class="card-title">Campeonato Brasileiro 2021 - Série B</h5>
-                    <p class="card-text">Simulador para o Campeonato Brasileiro 2021 - Série B</p>
-                    <a href="/brasileirao-serie-b-2021" class="btn btn-primary">Simular</a>
-                    <% if(logado) { %>
-                        <a href="/gerenciar?campeonato=BRA2021A" class="btn btn-danger" style="float: right;">Gerenciar</a>
-                    <% } %>
+            <%    campeonatos.forEach(function(campeonato){ %>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title"><%= campeonato.nome %> <%= campeonato.ano %></h5>
+                        <p class="card-text">Simulador para <%= campeonato.nome %> <%= campeonato.ano %></p>
+                        <a href="/simular?campeonatoId=<%= campeonato._id %>" class="btn btn-primary">Simular</a>
+                        <% if(logado) { %>
+                            <a href="/gerenciar?campeonatoId=<%= campeonato._id %>" class="btn btn-danger" style="float: right;">Gerenciar</a>
+                        <% } %>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <%    })        %>
         </div>
       </div>
 </body>
