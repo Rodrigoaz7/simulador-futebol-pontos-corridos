@@ -2,7 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const env = require('dotenv');
 const mongoose = require('mongoose');
-env.config({ path: './env/simulador.env' });
+env.config({ path: '../env/simulador.env' });
 
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: false });
 mongoose.Promise = global.Promise; // → Queremos que o mongoose utilize promises ES6
@@ -10,10 +10,10 @@ mongoose.connection.on('error', err => {
     console.log(`🙅 🚫 → ${err.message}`);
 });
 
-require('./src/models/Rodada');
-require('./src/models/Time');
-require('./src/models/Partida');
-require('./src/models/Campeonato');
+require('../src/models/Rodada');
+require('../src/models/Time');
+require('../src/models/Partida');
+require('../src/models/Campeonato');
 
 const Rodada = mongoose.model('Rodada');
 const Time = mongoose.model('Time');
