@@ -7,12 +7,19 @@
     <script>      
         window.onload = function() {
             const campeonato =  <%- campeonato %>;
+            let rodadas = [<%- rodadas %>];
             let times = [<%- times %>];
             times.sort(function (a, b) {
                 return b.pontuacao - a.pontuacao || b.n_vitorias - a.n_vitorias || b.saldo_gols - a.saldo_gols || b.gols_pro - a.gols_pro;
             });
+            rodadas.forEach(rodada => {
+                rodada.partidas.forEach(partida => {
+                    partida['realizado'] = partida.gols_time_casa != null && partida.gols_time_visitante != null;
+                })
+            });
+            
             localStorage.setItem("times", JSON.stringify(times));
-            localStorage.setItem("rodadas", JSON.stringify([<%- rodadas %>]));
+            localStorage.setItem("rodadas", JSON.stringify(rodadas));
             localStorage.setItem("rodadaAtual", campeonato.rodada_atual);
             localStorage.setItem("campeonato", JSON.stringify(campeonato));
             $('#titulo').text(campeonato.nome + " " + campeonato.ano);
@@ -36,15 +43,15 @@
                       <tr>
                         <th></th>
                         <th>Classificação</th>
-                        <th>P</th>
-                        <th>J</th>
-                        <th>V</th>
-                        <th>E</th>
-                        <th>D</th>
-                        <th>GP</th>
-                        <th>GC</th>
-                        <th>SG</th>
-                        <th>%</th>
+                        <th title="Pontuação">P</th>
+                        <th title="Número de Jogos">J</th>
+                        <th title="Número de Vitórias">V</th>
+                        <th title="Número de Empates">E</th>
+                        <th title="Número de Derrotas">D</th>
+                        <th title="Gols Pró">GP</th>
+                        <th title="Gols Contra">GC</th>
+                        <th title="Saldo de Gols">SG</th>
+                        <th title="Aproveitamento">%</th>
                       </tr>
                     </thead>
                     <tbody id="tbodyTabelaClassificacao">

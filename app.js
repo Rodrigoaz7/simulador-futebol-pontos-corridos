@@ -62,7 +62,7 @@ app.post('/gerenciar/:campeonatoId',ensureAuthenticated, async (req,res)=>{
 		res.redirect("/");
 	}
 	let dadosCompletos = await controllerCampeonato.getDadosCampeonatoCompleto(req.params.campeonatoId);
-	if(dadosCompletos) {
+	if(dadosCompletos && msgErro) {
 		dadosCompletos.error_msg = msgErro;
 	}
 	
