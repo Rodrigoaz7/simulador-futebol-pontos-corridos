@@ -87,10 +87,11 @@ function atualizarRodada() {
         let imgIcone = $('<img>').attr({"src": partida.time_casa.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
         let inputCasa = $('<input>')
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_casa", 
-                "name": partida.time_casa + "_" + partida.time_visitante, 
+                "name": partida.time_casa + "_" + partida.time_visitante,
+                "title": partida.realizado ? 'Partida já Realizada' : '',  
                 "onchange": "atualizarPartida(event);", "value": partida.gols_time_casa})
-            .addClass('form-control inputPlacar');
-        
+            .addClass(partida.realizado ? 'form-control inputPlacar partidaJaJogada' : 'form-control inputPlacar');
+
         spanCasaTime.append(imgIcone);
         spanCasaInput.append(inputCasa);
         spanCasa.append(spanCasaTime);
@@ -108,8 +109,9 @@ function atualizarRodada() {
         let inputVisitante = $('<input>')
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_visitante", 
                 "name": partida.time_casa + "_" + partida.time_visitante, 
+                "title": partida.realizado ? 'Partida já Realizada' : '',  
                 "onchange": "atualizarPartida(event);", "value": partida.gols_time_visitante})
-            .addClass('form-control inputPlacar');
+                .addClass(partida.realizado ? 'form-control inputPlacar partidaJaJogada' : 'form-control inputPlacar');
         
         spanVisitante.append(imgIconeVisitante);
         spanVisitante.append(inputVisitante);

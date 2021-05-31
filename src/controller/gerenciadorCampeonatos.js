@@ -26,7 +26,7 @@ exports.atualizarCampeonato = async (campeonatoId, data) => {
 }
 
 exports.atualizarPartidas = async (campeonatoId, data) => {
-    if(data.rodada && data.rodada > 0) {
+    if(data.rodada) {
         const campeonato = await Campeonato.findById(campeonatoId);
         if(campeonato == null) return "Campeonato Não Encontrado";
         let times = await Time.find({campeonato: new ObjectID(campeonatoId)});
@@ -36,7 +36,6 @@ exports.atualizarPartidas = async (campeonatoId, data) => {
         let partidas = rodada.partidas;
 
         partidas.forEach(async partida => {
-
             // Se a partida teve os dados preenchidos
             if(data[partida.time_casa] && data[partida.time_visitante]) {
                 // Se a partida ainda não havia sido cadastrada anteriormente
