@@ -40,8 +40,8 @@ exports.atualizarPartidas = async (campeonatoId, data) => {
             if(data[partida.time_casa] && data[partida.time_visitante]) {
                 // Se a partida ainda não havia sido cadastrada anteriormente
                 if(partida.gols_time_casa == null && partida.gols_time_visitante == null) {
-                    partida.gols_time_casa = data[partida.time_casa];
-                    partida.gols_time_visitante = data[partida.time_visitante];
+                    partida.gols_time_casa = parseInt(data[partida.time_casa]);
+                    partida.gols_time_visitante = parseInt(data[partida.time_visitante]);
                     await partida.save()
 
                     let equipeMandante = times.filter(el => {
@@ -51,12 +51,12 @@ exports.atualizarPartidas = async (campeonatoId, data) => {
                         return el.nome == partida.time_visitante
                     })[0];
                     
-                    equipeMandante.gols_pro += data[partida.time_casa];
-                    equipeMandante.gols_contra += data[partida.time_visitante];
-                    equipeMandante.saldo_gols += (data[partida.time_casa] - data[partida.time_visitante]);
-                    equipeVisitante.gols_pro += data[partida.time_visitante];
-                    equipeVisitante.gols_contra += data[partida.time_casa];
-                    equipeVisitante.saldo_gols += (data[partida.time_visitante] - data[partida.time_casa]);
+                    equipeMandante.gols_pro += parseInt(data[partida.time_casa]);
+                    equipeMandante.gols_contra += parseInt(data[partida.time_visitante]);
+                    equipeMandante.saldo_gols += parseInt(data[partida.time_casa]) - parseInt(data[partida.time_visitante]);
+                    equipeVisitante.gols_pro += parseInt(data[partida.time_visitante]);
+                    equipeVisitante.gols_contra += parseInt(data[partida.time_casa]);
+                    equipeVisitante.saldo_gols += parseInt(data[partida.time_visitante]) - parseInt(data[partida.time_casa]);
 
                     if(data[partida.time_casa] > data[partida.time_visitante]) {
                         equipeMandante.n_vitorias += 1;
