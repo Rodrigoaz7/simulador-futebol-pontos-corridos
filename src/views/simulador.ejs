@@ -9,9 +9,15 @@
             const campeonato =  <%- campeonato %>;
             let rodadas = [<%- rodadas %>];
             let times = [<%- times %>];
+
+            times.forEach(time => {
+                time.aproveitamento = (time.n_jogos > 0 ? (time.pontuacao / (time.n_jogos * 3.0)) * 100.0 : 0).toFixed(2);
+            });
+
             times.sort(function (a, b) {
                 return b.pontuacao - a.pontuacao || b.n_vitorias - a.n_vitorias || b.saldo_gols - a.saldo_gols || b.gols_pro - a.gols_pro;
             });
+
             rodadas.forEach(rodada => {
                 rodada.partidas.forEach(partida => {
                     partida['realizado'] = partida.gols_time_casa != null && partida.gols_time_visitante != null;
