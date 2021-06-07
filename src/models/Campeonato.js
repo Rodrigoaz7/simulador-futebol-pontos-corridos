@@ -19,6 +19,14 @@ const CampeonatoSchema = new Schema({
   itens_desempate: {
     type: String,
     default: "P-NV-SG-GP"
+  },
+  campeonato_de_selecoes: {
+    type: Boolean,
+    default: false
+  },
+  divisao_classificatoria: {
+    type: Array,
+    default: ["0-4-blue", "5-6-green", "7-12-#FF6600", "13-16-black", "17-20-red"]
   }
 });
 

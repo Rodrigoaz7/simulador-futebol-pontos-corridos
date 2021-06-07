@@ -1,12 +1,13 @@
 function atualizarLinksNavegacao(){
     const rodadaAtual = localStorage.getItem("rodadaAtual");
+    const quantRodadas = JSON.parse(localStorage.getItem("rodadas")).length;
     $('#textoRodada').text("Rodada " + rodadaAtual);
-
+    console.log(quantRodadas);
     if(rodadaAtual == 1) {
         $('#linkVoltar').empty();
     }
 
-    if(rodadaAtual == 38) {
+    if(rodadaAtual == quantRodadas) {
         $('#linkAvancar').empty();
     }
 
@@ -14,7 +15,7 @@ function atualizarLinksNavegacao(){
         $('#linkVoltar').html('<a href="#" onclick="voltarRodada();" style="font-weight: bold; font-size: 120%;"><</a>');
     }
 
-    if(rodadaAtual < 38) {
+    if(rodadaAtual < quantRodadas) {
         $('#linkAvancar').html('<a href="#" onclick="passarRodada();" style="font-weight: bold; font-size: 120%;">></a>');
     }
 }
@@ -37,15 +38,21 @@ function voltarRodada () {
 
 function atualizarTabela() {
     const times = JSON.parse(localStorage.getItem("times"));
+    const divisaoClassificatoria = JSON.parse(localStorage.getItem("campeonato")).divisao_classificatoria;
+
     $('#tbodyTabelaClassificacao').empty();
     times.forEach((time, index) => {
         let linha = $('<tr>').addClass('bar');
-
         let cssCol0 = {"font-weight": "bold", "font-size": "110%"}
-        if(index < 4) cssCol0["color"] = "blue";
-        if(index == 4 || index == 5) cssCol0["color"] = "green";
-        if(index > 5 && index < 12) cssCol0["color"] = "#FF6600";
-        if(index > 15) cssCol0["color"] = "red";
+
+        for(let i = 1; i <= divisaoClassificatoria.length; i++) {
+            let range = divisaoClassificatoria[i-1].split("-");
+            if(index+1 >= range[0] && index+1 <= range[1]) {
+                cssCol0["color"] = range[2];
+                break;
+            }
+        }
+
         let col0 = $('<td>').text(index+1).css(cssCol0);
         let col1 = $('<td>').text(time.nome);
         let col2 = $('<td>').text(time.pontuacao);
@@ -74,6 +81,7 @@ function atualizarTabela() {
 
 function atualizarRodada() {
     const rodadaAtual = JSON.parse(localStorage.getItem("rodadaAtual"));
+    const campeonato = JSON.parse(localStorage.getItem("campeonato"));
     const rodada = JSON.parse(localStorage.getItem("rodadas"))[rodadaAtual-1];
     $('#listaRodadas').empty();
 
@@ -84,7 +92,8 @@ function atualizarRodada() {
         let spanCasaTime = $('<div>').text(partida.time_casa).addClass("placarMandante").css({"margin-right": "10%"});
         let spanCasaInput = $('<div>').css({"float": "right"});
 
-        let imgIcone = $('<img>').attr({"src": partida.time_casa.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
+        let pathTimeCasa = campeonato.campeonato_de_selecoes ? ("selecoes/" + partida.time_casa) : ("clubes/" + partida.time_casa);
+        let imgIcone = $('<img>').attr({"src": pathTimeCasa.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
         let inputCasa = $('<input>')
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_casa", 
                 "name": partida.time_casa + "_" + partida.time_visitante,
@@ -105,7 +114,8 @@ function atualizarRodada() {
         let spanVisitanteTime = $('<div>').text(partida.time_visitante).addClass("placarVisitante").css({"margin-left": "10%"});
         let spanVisitanteInput = $('<div>').css({"float": "left"});
 
-        let imgIconeVisitante = $('<img>').attr({"src": partida.time_visitante.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
+        let pathTimeVisitante = campeonato.campeonato_de_selecoes ? ("selecoes/" + partida.time_visitante) : ("clubes/" + partida.time_visitante);
+        let imgIconeVisitante = $('<img>').attr({"src": pathTimeVisitante.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
         let inputVisitante = $('<input>')
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_visitante", 
                 "name": partida.time_casa + "_" + partida.time_visitante, 
