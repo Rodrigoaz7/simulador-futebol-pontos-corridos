@@ -26,7 +26,8 @@ exports.atualizarCampeonato = async (campeonatoId, data) => {
 }
 
 exports.atualizarPartidas = async (campeonatoId, data) => {
-    if(data.rodada) {
+
+    if(data.rodada != 0) {
         const campeonato = await Campeonato.findById(campeonatoId);
         if(campeonato == null) return "Campeonato Não Encontrado";
         let times = await Time.find({campeonato: new ObjectID(campeonatoId)});
