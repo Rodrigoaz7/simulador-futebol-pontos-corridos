@@ -25,7 +25,8 @@
                         let spanCasa = $('<span>').addClass('placarMandante').css({"width": "45%", "text-align": "right"});
                         let spanCasaTime = $('<div>').text(partida.time_casa).addClass("placarMandante").css({"margin-right": "10%"});
                         let spanCasaInput = $('<div>').css({"float": "right"});
-                        let imgIcone = $('<img>').attr({"src": partida.time_casa.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
+                        let pathTimeCasa = <%- campeonato.campeonato_de_selecoes %> ? ("selecoes/" + partida.time_casa) : ("clubes/" + partida.time_casa);
+                        let imgIcone = $('<img>').attr({"src": pathTimeCasa.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
                         
                         let inputCasa = $('<input>')
                             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_casa", 
@@ -46,7 +47,8 @@
                         let spanVisitanteTime = $('<div>').text(partida.time_visitante).addClass("placarVisitante").css({"margin-left": "10%"});
                         let spanVisitanteInput = $('<div>').css({"float": "left"});
 
-                        let imgIconeVisitante = $('<img>').attr({"src": partida.time_visitante.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
+                        let pathTimeVisitante = <%- campeonato.campeonato_de_selecoes %> ? ("selecoes/" + partida.time_visitante) : ("clubes/" + partida.time_visitante);
+                        let imgIconeVisitante = $('<img>').attr({"src": pathTimeVisitante.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + ".svg"}).addClass("iconeClube").css({"margin-left": "10%"});
                         let inputVisitante = $('<input>')
                             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_visitante", 
                                 "name": partida.time_visitante, 
@@ -73,6 +75,8 @@
     <form action="/gerenciar/<%= campeonato._id %>" method="POST">
     <div class="container-fluid" style="margin-top: 1rem;">
         
+        <%- include ('./partials/bannerHeader') %>
+
         <div class="card w-100">
             <div class="card-body">
                 <div class="row">

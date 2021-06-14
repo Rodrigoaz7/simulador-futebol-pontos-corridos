@@ -9,15 +9,7 @@
 <body style="min-width: fit-content;">
     <div class="container-fluid" style="margin-top: 1rem;">
         <%- include ('./partials/messages') %>
-        <div class="row">
-            <div class="col-sm-12">
-                <% if(logado) { %>
-                    <a href="/logout" class="btn btn-danger" style="float: right;">Logout</a>
-                <% } else { %>
-                    <a href="/login" class="btn btn-info" style="float: right;">Login</a>
-                <% } %>
-            </div>
-        </div>
+        <%- include ('./partials/bannerHeader') %>
 
         <br/>
 

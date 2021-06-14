@@ -1,0 +1,14 @@
+<div class="card w-100">
+    <div class="row bg-light" style="padding: 1rem;">
+        <div class="col-sm-1">
+            <a href="/" title="Início"><img src="logo.png" width="40" /></a>
+        </div>
+        <div class="col-sm-11">
+            <% if(logado) { %>
+                <a href="/logout" class="btn btn-danger" style="float: right;">Logout</a>
+            <% } else { %>
+                <a href="/login" class="btn btn-info" style="float: right;">Login</a>
+            <% } %>
+        </div>
+    </div>
+</div>
