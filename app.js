@@ -33,12 +33,14 @@ app.get('/simular', async function(req,res) {
 	const campeonato = await controller.obterCampeonato(req.query.campeonatoId);
 	const times = await controller.obterTimes(req.query.campeonatoId);
 	const rodadas = await controller.obterRodadas(req.query.campeonatoId);
-	
+	const isLogado = req.isAuthenticated();
+
 	res.render("simulador", 
 	{
 		campeonato: campeonato,
 		times: times,
-		rodadas: rodadas
+		rodadas: rodadas,
+		logado: isLogado
 	});
 });
 
@@ -47,7 +49,10 @@ app.get('/gerenciar',ensureAuthenticated, async (req,res)=>{
 		res.redirect("/")
 	}
 	const dadosCompletos = await controllerCampeonato.getDadosCampeonatoCompleto(req.query.campeonatoId);
+	const isLogado = req.isAuthenticated();
+
 	if(dadosCompletos != null) {
+		dadosCompletos['logado'] = isLogado;
 		res.render('gerenciador', dadosCompletos);
 	} else {
 		res.render("index", {logado: true, error_msg: "Campeonato inválido"});
@@ -65,6 +70,8 @@ app.post('/gerenciar/:campeonatoId',ensureAuthenticated, async (req,res)=>{
 	}
 	let dadosCompletos = await controllerCampeonato.getDadosCampeonatoCompleto(req.params.campeonatoId);
 	if(dadosCompletos && msgErro) {
+		const isLogado = req.isAuthenticated();
+		dadosCompletos['logado'] = isLogado;
 		dadosCompletos.error_msg = msgErro;
 	}
 	
