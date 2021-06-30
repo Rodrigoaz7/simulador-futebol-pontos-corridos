@@ -7,7 +7,7 @@ const CampeonatoSchema = new Schema({
       type: String,
       unique: true
   },
-  ano: Number,
+  ano: String,
   rodada_atual: {
       type: Number,
       default: 1
