@@ -98,7 +98,7 @@ function atualizarRodada() {
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_casa", 
                 "name": partida.time_casa + "_" + partida.time_visitante,
                 "title": partida.realizado ? 'Partida já Realizada' : '',  
-                "onchange": "atualizarPartida(event);", "value": partida.gols_time_casa})
+                "onchange": "atualizarPartida(event);", "onclick": "destacarEquipe(event);", "value": partida.gols_time_casa})
             .addClass(partida.realizado ? 'form-control inputPlacar partidaJaJogada' : 'form-control inputPlacar');
 
         spanCasaTime.append(imgIcone);
@@ -120,7 +120,7 @@ function atualizarRodada() {
             .attr({"type": "number", "min": 0, "max": 99, "id": index+1 + "_visitante", 
                 "name": partida.time_casa + "_" + partida.time_visitante, 
                 "title": partida.realizado ? 'Partida já Realizada' : '',  
-                "onchange": "atualizarPartida(event);", "value": partida.gols_time_visitante})
+                "onchange": "atualizarPartida(event);", "onclick": "destacarEquipe(event);", "value": partida.gols_time_visitante})
                 .addClass(partida.realizado ? 'form-control inputPlacar partidaJaJogada' : 'form-control inputPlacar');
         
         spanVisitante.append(imgIconeVisitante);
@@ -132,6 +132,25 @@ function atualizarRodada() {
 
         $('#listaRodadas').append(li);
     });
+}
+
+function destacarEquipe(event) {
+    $("#table tr").css({'border': 'none', 'background-color': 'white'});
+    let nomeEquipeMandante = event.target.name.split("_")[0];
+    let nomeEquipeVisitante = event.target.name.split("_")[1];
+    let indexMandante = -1;
+    let indexVisitante = -1;
+    JSON.parse(localStorage.getItem("times")).find(function(item, i){
+        if(item.nome === nomeEquipeMandante){
+            indexMandante = i;
+        }
+        if(item.nome === nomeEquipeVisitante){
+            indexVisitante = i;
+        }
+        if(indexMandante > -1 && indexVisitante > -1) return i;
+    });
+    $("#table").find('tr').eq(indexMandante+1).css({'border': '2px solid #bbbb', 'background-color': '#feee'});
+    $("#table").find('tr').eq(indexVisitante+1).css({'border': '2px solid #bbbb', 'background-color': '#feee'});
 }
 
 function atualizarPartida(event) {
