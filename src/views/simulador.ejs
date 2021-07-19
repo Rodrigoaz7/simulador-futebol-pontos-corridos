@@ -6,9 +6,26 @@
 <%- include ('./partials/styles') %>
     <script>      
         window.onload = function() {
-            const campeonato =  <%- campeonato %>;
-            let rodadas = [<%- rodadas %>];
-            let times = [<%- times %>];
+            let respostaConfirm = false;
+            let campeonato = <%- campeonato %>;
+            let rodadas = [];
+            let times = [];
+
+            if (localStorage.getItem("times") && localStorage.getItem("rodadas") && localStorage.getItem("campeonato")
+                    && JSON.parse(localStorage.getItem("campeonato")).codigo == campeonato.codigo){
+               respostaConfirm = confirm("Existe uma simulação em andamento gravada. Deseja recarregá-la?")
+            }
+
+            if(respostaConfirm) {
+                campeonato =  JSON.parse(localStorage.getItem("campeonato"));
+                rodadas = JSON.parse(localStorage.getItem("rodadas"));
+                times = JSON.parse(localStorage.getItem("times"));
+            }
+
+            if(!respostaConfirm) {
+                rodadas = [<%- rodadas %>];
+                times = [<%- times %>];
+            }
 
             times.forEach(time => {
                 time.aproveitamento = (time.n_jogos > 0 ? (time.pontuacao / (time.n_jogos * 3.0)) * 100.0 : 0).toFixed(2);
@@ -23,11 +40,12 @@
                     partida['realizado'] = partida.gols_time_casa != null && partida.gols_time_visitante != null;
                 })
             });
-            
+
             localStorage.setItem("times", JSON.stringify(times));
             localStorage.setItem("rodadas", JSON.stringify(rodadas));
             localStorage.setItem("rodadaAtual", campeonato.rodada_atual);
             localStorage.setItem("campeonato", JSON.stringify(campeonato));
+
             $('#titulo').text(campeonato.nome + " " + campeonato.ano);
             atualizarLinksNavegacao();
             atualizarTabela();
