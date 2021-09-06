@@ -4,10 +4,13 @@
             <a href="/" title="Início"><img src="logo.png" width="40" /></a>
         </div>
         <div class="col-sm-11">
-            <% if(logado) { %>
+            <!-- <% if(logado) { %>
                 <a href="/logout" class="btn btn-danger" style="float: right;">Logout</a>
             <% } else { %>
                 <a href="/login" class="btn btn-info" style="float: right;">Login</a>
+            <% } %> -->
+            <% if(logado) { %>
+                <a href="/logout" class="btn btn-danger" style="float: right;">Logout</a>
             <% } %>
         </div>
     </div>
