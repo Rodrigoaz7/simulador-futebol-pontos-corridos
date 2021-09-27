@@ -156,6 +156,7 @@ function destacarEquipe(event) {
 function atualizarPartida(event) {
     console.log("disparei evento de mudança")
     const rodadaAtual = localStorage.getItem("rodadaAtual");
+    const campeonato = JSON.parse(localStorage.getItem("campeonato"));
     let rodadas = JSON.parse(localStorage.getItem("rodadas"));
     const id = event.target.id.split("_")[0];
     const mandante = event.target.id.split("_")[1];
@@ -275,6 +276,12 @@ function atualizarPartida(event) {
         timeVisitante.aproveitamento = aproveitamentoVisitante.toFixed(2);
 
         times.sort(function (a, b) {
+            if(campeonato.itens_desempate == "P-SG-NV-GP") {
+                return b.pontuacao - a.pontuacao || b.saldo_gols - a.saldo_gols || b.n_vitorias - a.n_vitorias ||  b.gols_pro - a.gols_pro;
+            }
+            if(campeonato.itens_desempate == "P-SG-GP") {
+                return b.pontuacao - a.pontuacao || b.saldo_gols - a.saldo_gols || b.gols_pro - a.gols_pro;
+            }
             return b.pontuacao - a.pontuacao || b.n_vitorias - a.n_vitorias || b.saldo_gols - a.saldo_gols || b.gols_pro - a.gols_pro;
         });
         

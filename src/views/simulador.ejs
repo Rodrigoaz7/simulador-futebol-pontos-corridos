@@ -28,10 +28,19 @@
             }
 
             times.forEach(time => {
+                if(time.perda_pontos > 0) {
+                    time.pontuacao -= time.perda_pontos;
+                }
                 time.aproveitamento = (time.n_jogos > 0 ? (time.pontuacao / (time.n_jogos * 3.0)) * 100.0 : 0).toFixed(2);
             });
 
             times.sort(function (a, b) {
+                if(campeonato.itens_desempate == "P-SG-NV-GP") {
+                    return b.pontuacao - a.pontuacao || b.saldo_gols - a.saldo_gols || b.n_vitorias - a.n_vitorias ||  b.gols_pro - a.gols_pro;
+                }
+                if(campeonato.itens_desempate == "P-SG-GP") {
+                    return b.pontuacao - a.pontuacao || b.saldo_gols - a.saldo_gols || b.gols_pro - a.gols_pro;
+                }
                 return b.pontuacao - a.pontuacao || b.n_vitorias - a.n_vitorias || b.saldo_gols - a.saldo_gols || b.gols_pro - a.gols_pro;
             });
 

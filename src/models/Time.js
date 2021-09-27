@@ -30,6 +30,10 @@ const TimeSchema = new Schema({
     gols_contra: {
       type: Number,
       default: 0
+    },
+    perda_pontos: {
+      type: Number,
+      default: 0
     }
 });
 
