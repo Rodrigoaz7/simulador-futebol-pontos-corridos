@@ -34,8 +34,8 @@ exports.obterPartidas = async (rodadaId) => {
     return rodada.partidas;
 };
 
-exports.obterCampeonatos = async () => {
-    return await Campeonato.find({});
+exports.obterCampeonatos = async (filtros) => {
+    return await Campeonato.find(filtros);
 };
 
 exports.obterCampeonato = async (campeonatoId) => {

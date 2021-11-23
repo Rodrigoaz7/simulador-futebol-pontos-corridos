@@ -6,8 +6,24 @@ const passport = require('passport');
 
 app.get('/', async function(req,res) {
 	const isLogado = req.isAuthenticated();
-	const campeonatos = await controller.obterCampeonatos();
-	res.render("index", {campeonatos, logado: isLogado});
+	const campeonatos = await controller.obterCampeonatos({});
+	res.render("index", {campeonatos, logado: isLogado, req, situacao: 0});
+});
+
+app.post('/', async function(req,res) {
+	const isLogado = req.isAuthenticated();
+
+	let filtro = {};
+	const ativo = req.body.situacao;
+
+	if (ativo == "1" ) {
+		filtro['ativo'] = true;
+	} else if (ativo == "2") {
+		filtro['ativo'] = false;
+	}
+
+	const campeonatos = await controller.obterCampeonatos(filtro);
+	res.render("index", {campeonatos, logado: isLogado, situacao: ativo});
 });
 
 app.get('/login', function(req,res) {
@@ -60,13 +76,14 @@ app.get('/gerenciar',ensureAuthenticated, async (req,res)=>{
 });
 
 app.post('/gerenciar/:campeonatoId',ensureAuthenticated, async (req,res)=>{
-	const dataCampeonato = { nome: req.body.nome, ano: req.body.ano, rodada_atual: req.body.rodada_atual, campeonato_de_selecoes: req.body.campeonato_de_selecoes }
+	const dataCampeonato = { nome: req.body.nome, ano: req.body.ano, rodada_atual: req.body.rodada_atual, 
+		campeonato_de_selecoes: req.body.campeonato_de_selecoes, ativo: req.body.situacao }
 	await controllerCampeonato.atualizarCampeonato(req.params.campeonatoId, dataCampeonato);
 	const msgErro = await controllerCampeonato.atualizarPartidas(req.params.campeonatoId, req.body)
 	if(msgErro == null) {
 		const isLogado = req.isAuthenticated();
-		const campeonatos = await controller.obterCampeonatos();
-		res.render("index", {campeonatos, logado: isLogado});
+		const campeonatos = await controller.obterCampeonatos({});
+		res.render("index", {campeonatos, logado: isLogado, situacao: 0});
 	}
 	let dadosCompletos = await controllerCampeonato.getDadosCampeonatoCompleto(req.params.campeonatoId);
 	if(dadosCompletos && msgErro) {
