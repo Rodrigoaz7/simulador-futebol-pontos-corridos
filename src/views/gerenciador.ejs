@@ -4,7 +4,9 @@
 
 <script>
     $(document).ready(function(){
+        console.log(<%- campeonato.ativo %>)
         $('#campeonato_de_selecoes').val(<%- campeonato.campeonato_de_selecoes %> ? 1 : 0);
+        $('#situacao').val(<%- campeonato.ativo %> ? 1 : 0);
 
         $("#selectRodadas").change(function(){
             var idRodada = $(this).children("option:selected").val();
@@ -85,12 +87,12 @@
                         <input type="text" class="form-control" id="nome" name="nome"  placeholder="username" value="<%= campeonato.nome %>"/>
                     </div>
 
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <h5 class="card-title">Ano</h5>
                         <input type="text" class="form-control" id="ano" name="ano" placeholder="ano" value="<%= campeonato.ano %>"/>
                     </div>
 
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <h5 class="card-title">Rodada Atual</h5>
                         <input type="number" min="1" max="38" class="form-control" id="rodadaAtual" name="rodada_atual"  placeholder="rodada atual"  
                             value="<%= campeonato.rodada_atual %>"/>
@@ -100,6 +102,13 @@
                         <select  class="form-control"  id="campeonato_de_selecoes" data-placeholder="Selecione a rodada" name="campeonato_de_selecoes">
                             <option value="0">Não</option>
                             <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5 class="card-title">Situação do Campeonato</h5>
+                        <select  class="form-control"  id="situacao" data-placeholder="Situação Atual do Campeonato" name="situacao">
+                            <option value="1">Em Andamento</option>
+                            <option value="0">Finalizado</option>
                         </select>
                     </div>
                 </div>

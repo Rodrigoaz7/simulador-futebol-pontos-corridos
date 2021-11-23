@@ -2,24 +2,57 @@
 <html>
 <%- include ('./partials/head') %>
 
+<script>
+    $(document).ready(function(){
+        $('#situacao').val(<%= situacao %>);
+    });
+</script>
+
 <style>
     .card {margin: 1rem !important;}
 </style>
 
 <body style="min-width: fit-content;">
+    <form action="/" method="POST">
     <div class="container-fluid" style="margin-top: 1rem;">
         <%- include ('./partials/messages') %>
         <%- include ('./partials/bannerHeader') %>
 
         <br/>
 
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h5 class="card-title">Situação dos Campeonatos</h5>
+                        <select  class="form-control"  id="situacao" data-placeholder="Selecione a rodada" name="situacao"
+                            value="<%= situacao %>">
+                            <option value="0">Todas as Situações</option>
+                            <option value="1">Em andamento</option>
+                            <option value="2">Finalizado</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5 class="card-title">&nbsp;</h5>
+                        <button type="submit" class="btn btn-primary btn-block">Pesquisar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
-            <%    campeonatos.forEach(function(campeonato){ %>
+            <% campeonatos.forEach(function(campeonato){ %>
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title"><%= campeonato.nome %> <%= campeonato.ano %></h5>
-                        <p class="card-text">Simulador para <%= campeonato.nome %> <%= campeonato.ano %></p>
+                        <h5 class="card-title"><%= campeonato.nome %> <%= campeonato.ano %>
+                            <% if (campeonato.ativo) { %>
+                                <span class="badge bg-success">Em Andamento</span>
+                            <% } else { %>
+                                <span class="badge bg-secondary">Finalizado</span>
+                            <% } %>
+                        </h5>
+                        <p class="card-text">Simulador para <%= campeonato.nome %> <%= campeonato.ano %> </p>
                         <a href="/simular?campeonatoId=<%= campeonato._id %>" class="btn btn-primary">Simular</a>
                         <% if(logado) { %>
                             <a href="/gerenciar?campeonatoId=<%= campeonato._id %>" class="btn btn-danger" style="float: right;">Gerenciar</a>
@@ -29,6 +62,8 @@
                 </div>
             <%    })        %>
         </div>
+
       </div>
+      </form>
 </body>
 </html>
