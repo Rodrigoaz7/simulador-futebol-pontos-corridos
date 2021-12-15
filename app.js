@@ -7,7 +7,7 @@ const passport = require('passport');
 app.get('/', async function(req,res) {
 	const isLogado = req.isAuthenticated();
 	const campeonatos = await controller.obterCampeonatos({});
-	res.render("index", {campeonatos, logado: isLogado, req, situacao: 0});
+	res.render("index", {campeonatos, logado: isLogado, req, situacao: 1});
 });
 
 app.post('/', async function(req,res) {
@@ -83,7 +83,7 @@ app.post('/gerenciar/:campeonatoId',ensureAuthenticated, async (req,res)=>{
 	if(msgErro == null) {
 		const isLogado = req.isAuthenticated();
 		const campeonatos = await controller.obterCampeonatos({});
-		res.render("index", {campeonatos, logado: isLogado, situacao: 0});
+		res.render("index", {campeonatos, logado: isLogado, situacao: 1});
 	}
 	let dadosCompletos = await controllerCampeonato.getDadosCampeonatoCompleto(req.params.campeonatoId);
 	if(dadosCompletos && msgErro) {
