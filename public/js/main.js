@@ -136,15 +136,15 @@ function atualizarRodada() {
 
 function destacarEquipe(event) {
     $("#table tr").css({'border': 'none', 'background-color': 'white'});
-    let nomeEquipeMandante = event.target.name.split("_")[0];
-    let nomeEquipeVisitante = event.target.name.split("_")[1];
+    let nomeEquipeMandante = event.target.name.trim().split("_")[0];
+    let nomeEquipeVisitante = event.target.name.trim().split("_")[1];
     let indexMandante = -1;
     let indexVisitante = -1;
     JSON.parse(localStorage.getItem("times")).find(function(item, i){
-        if(item.nome === nomeEquipeMandante){
+        if(item.nome.trim() === nomeEquipeMandante){
             indexMandante = i;
         }
-        if(item.nome === nomeEquipeVisitante){
+        if(item.nome.trim() === nomeEquipeVisitante){
             indexVisitante = i;
         }
         if(indexMandante > -1 && indexVisitante > -1) return i;
@@ -160,18 +160,17 @@ function atualizarPartida(event) {
     let rodadas = JSON.parse(localStorage.getItem("rodadas"));
     const id = event.target.id.split("_")[0];
     const mandante = event.target.id.split("_")[1];
-    const nomeTimes = event.target.name.split("_");
-
+    const nomeTimes = event.target.name.trim().split("_");
     var partidaAtual = rodadas[rodadaAtual-1].partidas[id-1];
 
     // Caso a partida já tenha sido preenchida anteriormente, os dados dela terão de ser removidos
     if(partidaAtual.gols_time_visitante != null && partidaAtual.gols_time_casa != null) {
         let times = JSON.parse(localStorage.getItem("times"));
         let equipeMandante = times.filter(el => {
-            return el.nome == nomeTimes[0]
+            return el.nome.trim() == nomeTimes[0]
         })[0];
         let equipeVisitante = times.filter(el => {
-            return el.nome == nomeTimes[1]
+            return el.nome.trim() == nomeTimes[1]
         })[0];
 
         equipeMandante.gols_pro -= partidaAtual.gols_time_casa;
@@ -222,9 +221,8 @@ function atualizarPartida(event) {
 
     if(partidaAtual.gols_time_visitante != null && partidaAtual.gols_time_casa != null) {
         let times = JSON.parse(localStorage.getItem("times"));
-        
         let timeMandante = times.filter(el => {
-            return el.nome == nomeTimes[0]
+            return el.nome.trim() == nomeTimes[0]
         })[0];
 
         timeMandante.n_jogos += 1;
@@ -250,7 +248,7 @@ function atualizarPartida(event) {
         timeMandante.aproveitamento = aproveitamentoMandante.toFixed(2);
 
         let timeVisitante = times.filter(el => {
-            return el.nome == nomeTimes[1]
+            return el.nome.trim() == nomeTimes[1]
         })[0];
 
         timeVisitante.n_jogos += 1;
