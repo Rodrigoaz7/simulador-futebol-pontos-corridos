@@ -1,0 +1,835 @@
+1ª rodada (8/4 ou 9/4)
+
+Ponte Preta x Grêmio
+
+CSA x Criciúma
+
+Sport Recife x Sampaio Corrêa
+
+Brusque x Guarani
+
+Novorizontino x CRB
+
+Londrina x Náutico
+
+Vasco da Gama x Vila Nova
+
+Bahia x Cruzeiro
+
+Tombense x Operário
+
+Chapecoense x Ituano
+
+2ª rodada (12/4, 15/4 ou 16/4)
+
+Guarani x Sport Recife
+
+CRB x Vasco da Gama
+
+Náutico x Bahia
+
+Criciúma x Londrina
+
+Ituano x CSA
+
+Operário x Ponte Preta
+
+Grêmio x Chapecoense
+
+Sampaio Corrêa x Tombense
+
+Cruzeiro x Brusque
+
+Vila Nova x Novorizontino
+
+3ª rodada (19/4, 22/4 ou 23/4)
+
+Ponte Preta x CRB
+
+CSA x Bahia
+
+Náutico x Operário
+
+Criciúma x Sport Recife
+
+Ituano x Vila Nova
+
+Londrina x Novorizontino
+
+Grêmio x Guarani
+
+Sampaio Corrêa x Brusque
+
+Tombense x Cruzeiro
+
+Chapecoense x Vasco da Gama
+
+4ª rodada (26/4 ou 27/4)
+
+Guarani x Criciúma
+
+CRB x Náutico
+
+Sport Recife x Ituano
+
+Brusque x CSA
+
+Novorizontino x Chapecoense
+
+Operário x Grêmio
+
+Vasco da Gama x Ponte Preta
+
+Bahia x Sampaio Corrêa
+
+Cruzeiro x Londrina
+
+Vila Nova x Tombense
+
+5ª rodada (29/4 ou 30/4)
+
+Ponte Preta x Brusque
+
+CSA x Sport Recife
+
+Náutico x Guarani
+
+Criciúma x Novorizontino
+
+Ituano x Bahia
+
+Londrina x Vila Nova
+
+Grêmio x CRB
+
+Sampaio Corrêa x Operário
+
+Tombense x Vasco da Gama
+
+Chapecoense x Cruzeiro
+
+6ª rodada (3/5, 6/5 ou 7/5)
+
+Guarani x Ponte Preta
+
+CRB x Sampaio Corrêa
+
+Sport Recife x Tombense
+
+Brusque x Chapecoense
+
+Novorizontino x Ituano
+
+Operário x Criciúma
+
+Vasco da Gama x CSA
+
+Bahia x Londrina
+
+Cruzeiro x Grêmio
+
+Vila Nova x Náutico
+
+7ª rodada (10/5, 13/5 ou 14/5)
+
+Ponte Preta x Novorizontino
+
+CSA x Operário
+
+Náutico x Cruzeiro
+
+Criciúma x CRB
+
+Ituano x Grêmio
+
+Londrina x Brusque
+
+Vasco da Gama x Bahia
+
+Sampaio Corrêa x Vila Nova
+
+Tombense x Guarani
+
+Chapecoense x Sport Recife
+
+8ª rodada (17/5,  20/5 ou 21/5)
+
+Guarani x Vasco da Gama
+
+CRB x Londrina
+
+Náutico x CSA
+
+Brusque x Tombense
+
+Novorizontino x Sport Recife
+
+Operário x Ituano
+
+Grêmio x Criciúma
+
+Bahia x Ponte Preta
+
+Cruzeiro x Sampaio Corrêa
+
+Vila Nova x Chapecoense
+
+9ª rodada (24/5, 27/5 ou 28/5)
+
+Ponte Preta x Chapecoense
+
+CSA x Novorizontino
+
+Sport Recife x CRB
+
+Criciúma x Cruzeiro
+
+Ituano x Náutico
+
+Londrina x Operário
+
+Vasco da Gama x Brusque
+
+Sampaio Corrêa x Guarani
+
+Tombense x Bahia
+
+Vila Nova x Grêmio
+
+10ª rodada (31/5, 3/6 ou 4/6)
+
+Guarani x Vila Nova
+
+CRB x CSA
+
+Sport Recife x Ponte Preta
+
+Brusque x Náutico
+
+Novorizontino x Sampaio Corrêa
+
+Operário x Cruzeiro
+
+Vasco da Gama x Grêmio
+
+Bahia x Criciúma
+
+Tombense x Ituano
+
+Chapecoense x Londrina
+
+11ª rodada (7/6 ou 8/6)
+
+Guarani x Operário
+
+CSA x Chapecoense
+
+Náutico x Vasco da Gama
+
+Criciúma x Sampaio Corrêa
+
+Ituano x Ponte Preta
+
+Londrina x Tombense
+
+Grêmio x Novorizontino
+
+Bahia x Sport Recife
+
+Cruzeiro x CRB
+
+Vila Nova x Brusque
+
+12ª rodada (10/6 ou 11/6)
+
+Ponte Preta x Londrina
+
+CRB x Vila Nova
+
+Sport Recife x Grêmio
+
+Brusque x Ituano
+
+Novorizontino x Guarani
+
+Operário x Bahia
+
+Vasco da Gama x Cruzeiro
+
+Sampaio Corrêa x Náutico
+
+Tombense x CSA
+
+Chapecoense x Criciúma
+
+13ª rodada (14/6, 17/6 ou 18/6)
+
+Guarani x CSA
+
+CRB x Ituano
+
+Náutico x Sport Recife
+
+Criciúma x Brusque
+
+Novorizontino x Tombense
+
+Londrina x Vasco da Gama
+
+Grêmio x Sampaio Corrêa
+
+Bahia x Chapecoense
+
+Cruzeiro x Ponte Preta
+
+Vila Nova x Operário
+
+14ª rodada (21/6, 24/6 ou 25/6)
+
+Ponte Preta x Sampaio Corrêa
+
+CSA x Grêmio
+
+Sport Recife x Brusque
+
+Criciúma x Vila Nova
+
+Ituano x Cruzeiro
+
+Londrina x Guarani
+
+Vasco da Gama x Operário
+
+Bahia x Novorizontino
+
+Tombense x Náutico
+
+Chapecoense x CRB
+
+15ª rodada (28/6 ou 29/6)
+
+Guarani x Ituano
+
+CRB x Tombense
+
+Náutico x Criciúma
+
+Brusque x Bahia
+
+Novorizontino x Vasco da Gama
+
+Operário x Chapecoense
+
+Grêmio x Londrina
+
+Sampaio Corrêa x CSA
+
+Cruzeiro x Sport Recife
+
+Vila Nova x Ponte Preta
+
+16ª rodada (1/7 ou 2/7)
+
+Ponte Preta x Tombense
+
+CRB x Guarani
+
+Náutico x Novorizontino
+
+Brusque x Operário
+
+Ituano x Criciúma
+
+Londrina x CSA
+
+Vasco da Gama x Sport Recife
+
+Bahia x Grêmio
+
+Cruzeiro x Vila Nova
+
+Chapecoense x Sampaio Corrêa
+
+17ª rodada (5/7, 8/7 ou 9/7)
+
+Guarani x Cruzeiro
+
+CSA x Ponte Preta
+
+Sport Recife x Londrina
+
+Criciúma x Vasco da Gama
+
+Novorizontino x Brusque
+
+Operário x CRB
+
+Grêmio x Náutico
+
+Sampaio Corrêa x Ituano
+
+Tombense x Chapecoense
+
+Vila Nova x Bahia
+
+18ª rodada (20/7 ou 21/7)
+
+Guarani x Bahia
+
+CRB x Brusque
+
+Náutico x Chapecoense
+
+Criciúma x Ponte Preta
+
+Ituano x Londrina
+
+Operário x Sport Recife
+
+Grêmio x Tombense
+
+Sampaio Corrêa x Vasco da Gama
+
+Cruzeiro x Novorizontino
+
+Vila Nova x CSA
+
+19ª rodada (19/7 ou 20/7)
+
+Ponte Preta x Náutico
+
+CSA x Cruzeiro
+
+Sport Recife x Vila Nova
+
+Brusque x Grêmio
+
+Novorizontino x Operário
+
+Londrina x Sampaio Corrêa
+
+Vasco da Gama x Ituano
+
+Bahia x CRB
+
+Tombense x Criciúma
+
+Chapecoense x Guarani
+
+20ª rodada (22/7 ou 23/7)
+
+Guarani x  Brusque
+
+CRB x Novorizontino
+
+Náutico x Londrina
+
+Criciúma x CSA
+
+Ituano x Chapecoense
+
+Operário x Tombense
+
+Grêmio x Ponte Preta
+
+Sampaio Corrêa x Sport Recife
+
+Cruzeiro x Bahia
+
+Vila Nova x Vasco da Gama
+
+21ª rodada (26/7, 29/7 ou 30/7)
+
+Ponte Preta x Operário
+
+CSA x Ituano
+
+Sport Recife x Guarani
+
+Brusque x Cruzeiro
+
+Novorizontino x Vila Nova
+
+Londrina x Criciúma
+
+Vasco da Gama x CRB
+
+Bahia x Náutico
+
+Tombense x Sampaio Corrêa
+
+Chapecoense x Grêmio
+
+22ª rodada (2/8, 5/8 ou 6/8)
+
+Guarani x  Grêmio
+
+CRB x Ponte Preta
+
+Sport Recife x Criciúma
+
+Brusque x Sampaio Corrêa
+
+Novorizontino x Londrina
+
+Operário x Náutico
+
+Vasco da Gama x Chapecoense
+
+Bahia x CSA
+
+Cruzeiro x Tombense
+
+Vila Nova x Ituano
+
+23ª rodada (9/8 ou 10/8)
+
+Ponte Preta x Vasco da Gama
+
+CSA x Brusque
+
+Náutico x CRB
+
+Criciúma x Guarani
+
+Ituano x Sport Recife
+
+Londrina x Cruzeiro
+
+Grêmio x Operário
+
+Sampaio Corrêa x Bahia
+
+Tombense x Vila Nova
+
+Chapecoense x Novorizontino
+
+24ª rodada (12/8 ou 13/8)
+
+Guarani x Náutico
+
+CRB x Grêmio
+
+Sport Recife x CSA
+
+Brusque x Ponte Preta
+
+Novorizontino x Criciúma
+
+Operário x Sampaio Corrêa
+
+Vasco da Gama x Tombense
+
+Bahia x Ituano
+
+Cruzeiro x Chapecoense
+
+Vila Nova x Londrina
+
+25ª rodada (16/8, 19/8 ou 20/8)
+
+Ponte Preta x Guarani
+
+CSA x Vasco da Gama
+
+Náutico x Vila Nova
+
+Criciúma x Operário
+
+Ituano x Novorizontino
+
+Londrina x Bahia
+
+Grêmio x Cruzeiro
+
+Sampaio Corrêa x CRB
+
+Tombense x Sport Recife
+
+Chapecoense x Brusque
+
+26ª rodada (23/8, 26/8 ou 27/8)
+
+Guarani x Tombense
+
+CRB x Criciúma
+
+Sport Recife x Chapecoense
+
+Brusque x Londrina
+
+Novorizontino x Ponte Preta
+
+Operário x CSA
+
+Grêmio x Ituano
+
+Bahia x Vasco da Gama
+
+Cruzeiro x Náutico
+
+Vila Nova x Sampaio Corrêa
+
+27ª rodada (30/8 ou 31/8)
+
+Ponte Preta x Bahia
+
+CSA x Náutico
+
+Sport Recife x Novorizontino
+
+Criciúma x Grêmio
+
+Ituano x Operário
+
+Londrina x CRB
+
+Vasco da Gama x Guarani
+
+Sampaio Corrêa x Cruzeiro
+
+Tombense x Brusque
+
+Chapecoense x Vila Nova
+
+28ª rodada (2/9 ou 3/9)
+
+Guarani x Sampaio Corrêa
+
+CRB x Sport Recife
+
+Náutico x Ituano
+
+Brusque x Vasco da Gama
+
+Novorizontino x CSA
+
+Operário x Londrina
+
+Grêmio x Vila Nova
+
+Bahia x Tombense
+
+Cruzeiro x Criciúma
+
+Chapecoense x Ponte Preta
+
+29ª rodada (6/9, 9/9 ou 10/9)
+
+Ponte Preta x Sport Recife
+
+CSA x CRB
+
+Náutico x Brusque
+
+Criciúma x Bahia
+
+Ituano x Tombense
+
+Londrina x Chapecoense
+
+Grêmio x Vasco da Gama
+
+Sampaio Corrêa x Novorizontino
+
+Cruzeiro x Operário
+
+Vila Nova x Guarani
+
+30ª rodada (13/9, 16/9 ou 17/9)
+
+Ponte Preta x Ituano
+
+CRB x Cruzeiro
+
+Sport Recife x Bahia
+
+Brusque x Vila Nova
+
+Novorizontino x Grêmio
+
+Operário x Guarani
+
+Vasco da Gama x Náutico
+
+Sampaio Corrêa x Criciúma
+
+Tombense x Londrina
+
+Chapecoense x CSA
+
+31ª rodada (20/9, 23/9 ou 24/9)
+
+Guarani x Novorizontino
+
+CSA x Tombense
+
+Náutico x Sampaio Corrêa
+
+Criciúma x Chapecoense
+
+Ituano x Brusque
+
+Londrina x Ponte Preta
+
+Grêmio x Sport Recife
+
+Bahia x Operário
+
+Cruzeiro x Vasco da Gama
+
+Vila Nova x CRB
+
+32ª rodada (27/9, 30/9 ou 1/10)
+
+Ponte Preta x Cruzeiro
+
+CSA x Guarani
+
+Sport Recife x Náutico
+
+Brusque x Criciúma
+
+Ituano x CRB
+
+Operário x Vila Nova
+
+Vasco da Gama x Londrina
+
+Sampaio Corrêa x Grêmio
+
+Tombense x Novorizontino
+
+Chapecoense x Bahia
+
+33ª rodada (22/10, 23/10 ou 24/10)
+
+Guarani x Londrina
+
+CRB x Chapecoense
+
+Náutico x Tombense
+
+Brusque x Sport Recife
+
+Novorizontino x Bahia
+
+Operário x Vasco da Gama
+
+Grêmio x CSA
+
+Sampaio Corrêa x Ponte Preta
+
+Cruzeiro x Ituano
+
+Vila Nova x Criciúma
+
+34ª rodada (7/10 ou 8/10)
+
+Ponte Preta x Vila Nova
+
+CSA x Sampaio Corrêa
+
+Sport Recife x Cruzeiro
+
+Criciúma x Náutico
+
+Ituano x Guarani
+
+Londrina x Grêmio
+
+Vasco da Gama x Novorizontino
+
+Bahia x Brusque
+
+Tombense x CRB
+
+Chapecoense x Operário
+
+35ª rodada (11/10, 14/10 ou 15/10)
+
+Guarani x CRB
+
+CSA x Londrina
+
+Sport Recife x Vasco da Gama
+
+Criciúma x Ituano
+
+Novorizontino x Náutico
+
+Operário x Brusque
+
+Grêmio x Bahia
+
+Sampaio Corrêa x Chapecoense
+
+Tombense x Ponte Preta
+
+Vila Nova x Cruzeiro
+
+36ª rodada (18/10, 21/10 ou 22/10)
+
+Ponte Preta x CSA
+
+CRB x Operário
+
+Náutico x Grêmio
+
+Brusque x Novorizontino
+
+Ituano x Sampaio Corrêa
+
+Londrina x Sport Recife
+
+Vasco da Gama x Criciúma
+
+Bahia x Vila Nova
+
+Cruzeiro x Guarani
+
+Chapecoense x Tombense
+
+37ª rodada (25/10, 28/10 ou 29/10)
+
+Ponte Preta x Criciúma
+
+CSA x Vila Nova
+
+Sport Recife x Operário
+
+Brusque x CRB
+
+Novorizontino x Cruzeiro
+
+Londrina x Ituano
+
+Vasco da Gama x Sampaio Corrêa
+
+Bahia x Guarani
+
+Tombense x Grêmio
+
+Chapecoense x Náutico
+
+38ª rodada (5/11)
+
+Guarani x Chapecoense
+
+CRB x Bahia
+
+Náutico x Ponte Preta
+
+Criciúma x Tombense
+
+Ituano x Vasco da Gama
+
+Operário x Novorizontino
+
+Grêmio x Brusque
+
+Sampaio Corrêa x Londrina
+
+Cruzeiro x CSA
+
+Vila Nova x Sport Recife
