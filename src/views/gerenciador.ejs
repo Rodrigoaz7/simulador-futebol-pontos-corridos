@@ -69,12 +69,32 @@
             });
         });
     });
+
+    // function save() {
+    //     var data = $('form').serializeArray();
+    //     var url = "/gerenciar/<%= campeonato._id %>" 
+
+    //     data.forEach((item, index) => {
+    //         item.name = item.name.trim()
+    //     });
+  
+    //     $.ajax({
+    //         type : "POST",
+    //         url : url,
+    //         contentType : "application/json",
+    //         data : JSON.stringify(data),
+    //         dataType : "json",  
+    //     }).done(function(data){
+    //         window.location.href = "/";
+    //     });
+    // }
+
 </script>
 
 <body style="min-width: fit-content;">
     <%- include ('./partials/styles') %>
     <%- include ('./partials/messages') %>
-    <form action="/gerenciar/<%= campeonato._id %>" method="POST">
+    <form id="form" action="/gerenciar/<%= campeonato._id %>" method="POST">
     <div class="container-fluid" style="margin-top: 1rem;">
         
         <%- include ('./partials/bannerHeader') %>
