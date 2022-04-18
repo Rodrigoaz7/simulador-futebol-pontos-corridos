@@ -35,14 +35,15 @@ exports.atualizarPartidas = async (campeonatoId, data) => {
         const rodada = await Rodada.findById(data.rodada).populate({ path: 'partidas' }).exec();
         if(rodada == null) return "Rodada Não Encontrada";
         let partidas = rodada.partidas;
-
         partidas.forEach(async partida => {
             // Se a partida teve os dados preenchidos
-            if(data[partida.time_casa] && data[partida.time_visitante]) {
+            placar_time_casa = data[partida.time_casa.trim()];
+            placar_time_visitante = data[partida.time_visitante.trim()];
+            if(placar_time_casa && placar_time_visitante) {
                 // Se a partida ainda não havia sido cadastrada anteriormente
                 if(partida.gols_time_casa == null && partida.gols_time_visitante == null) {
-                    partida.gols_time_casa = parseInt(data[partida.time_casa]);
-                    partida.gols_time_visitante = parseInt(data[partida.time_visitante]);
+                    partida.gols_time_casa = parseInt(placar_time_casa);
+                    partida.gols_time_visitante = parseInt(placar_time_visitante);
                     await partida.save()
 
                     let equipeMandante = times.filter(el => {
@@ -52,14 +53,17 @@ exports.atualizarPartidas = async (campeonatoId, data) => {
                         return el.nome == partida.time_visitante
                     })[0];
                     
-                    equipeMandante.gols_pro += parseInt(data[partida.time_casa]);
-                    equipeMandante.gols_contra += parseInt(data[partida.time_visitante]);
-                    equipeMandante.saldo_gols += parseInt(data[partida.time_casa]) - parseInt(data[partida.time_visitante]);
-                    equipeVisitante.gols_pro += parseInt(data[partida.time_visitante]);
-                    equipeVisitante.gols_contra += parseInt(data[partida.time_casa]);
-                    equipeVisitante.saldo_gols += parseInt(data[partida.time_visitante]) - parseInt(data[partida.time_casa]);
+                    placar_time_casa = data[partida.time_casa.trim()];
+                    placar_time_visitante = data[partida.time_visitante.trim()];
 
-                    if(data[partida.time_casa] > data[partida.time_visitante]) {
+                    equipeMandante.gols_pro += parseInt(placar_time_casa);
+                    equipeMandante.gols_contra += parseInt(placar_time_visitante);
+                    equipeMandante.saldo_gols += parseInt(placar_time_casa) - parseInt(placar_time_visitante);
+                    equipeVisitante.gols_pro += parseInt(placar_time_visitante);
+                    equipeVisitante.gols_contra += parseInt(placar_time_casa);
+                    equipeVisitante.saldo_gols += parseInt(placar_time_visitante) - parseInt(placar_time_casa);
+
+                    if(placar_time_casa > placar_time_visitante) {
                         equipeMandante.n_vitorias += 1;
                         equipeMandante.n_jogos += 1;
                         equipeMandante.pontuacao += 3;
@@ -67,7 +71,7 @@ exports.atualizarPartidas = async (campeonatoId, data) => {
                         equipeVisitante.n_derrotas += 1;
                     }
 
-                    if(data[partida.time_casa] < data[partida.time_visitante]) {
+                    if(placar_time_casa < placar_time_visitante) {
                         equipeVisitante.n_vitorias += 1;
                         equipeVisitante.n_jogos += 1;
                         equipeVisitante.pontuacao += 3;
@@ -75,7 +79,7 @@ exports.atualizarPartidas = async (campeonatoId, data) => {
                         equipeMandante.n_derrotas += 1;
                     }
 
-                    if(data[partida.time_casa] == data[partida.time_visitante]) {
+                    if(placar_time_casa == placar_time_visitante) {
                         equipeVisitante.n_empates += 1;
                         equipeVisitante.n_jogos += 1;
                         equipeVisitante.pontuacao += 1;

@@ -76,10 +76,19 @@ app.get('/gerenciar',ensureAuthenticated, async (req,res)=>{
 });
 
 app.post('/gerenciar/:campeonatoId',ensureAuthenticated, async (req,res)=>{
-	const dataCampeonato = { nome: req.body.nome, ano: req.body.ano, rodada_atual: req.body.rodada_atual, 
-		campeonato_de_selecoes: req.body.campeonato_de_selecoes, ativo: req.body.situacao }
+	
+	var objetoFormatado = {}
+	Object.keys(req.body).forEach((key, index) => {
+		newKey = key.trim()
+		objetoFormatado[newKey] = req.body[key]
+	});
+
+	const dataCampeonato = { nome: objetoFormatado.nome, ano: objetoFormatado.ano, rodada_atual: objetoFormatado.rodada_atual, 
+		campeonato_de_selecoes: objetoFormatado.campeonato_de_selecoes, ativo: objetoFormatado.situacao }
+
 	await controllerCampeonato.atualizarCampeonato(req.params.campeonatoId, dataCampeonato);
-	const msgErro = await controllerCampeonato.atualizarPartidas(req.params.campeonatoId, req.body)
+	const msgErro = await controllerCampeonato.atualizarPartidas(req.params.campeonatoId, objetoFormatado)
+
 	if(msgErro == null) {
 		const isLogado = req.isAuthenticated();
 		const campeonatos = await controller.obterCampeonatos({ativo: true});
@@ -93,6 +102,7 @@ app.post('/gerenciar/:campeonatoId',ensureAuthenticated, async (req,res)=>{
 	}
 	
 	res.render('gerenciador', dadosCompletos);
+
 });
 
 app.get('/partidas/:rodadaId', async (req,res)=>{
