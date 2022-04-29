@@ -47,10 +47,10 @@ exports.atualizarPartidas = async (campeonatoId, data) => {
                     await partida.save()
 
                     let equipeMandante = times.filter(el => {
-                        return el.nome == partida.time_casa
+                        return el.nome.trim() == partida.time_casa.trim()
                     })[0];
                     let equipeVisitante = times.filter(el => {
-                        return el.nome == partida.time_visitante
+                        return el.nome.trim() == partida.time_visitante.trim()
                     })[0];
                     
                     placar_time_casa = data[partida.time_casa.trim()];
