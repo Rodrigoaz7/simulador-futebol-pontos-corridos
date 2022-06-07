@@ -1,5 +1,8 @@
 version: 0.2
 phases:
+  install:
+    runtime-versions:
+      nodejs: 10  
   pre_build:
     commands:
       - echo Instalando dependencias
@@ -13,6 +16,8 @@ phases:
       - echo Build finalizado em `date`
 artifacts:
   files:
+    - app.js
+    - src/views/**/*
     - build/**/*
     - appspec.yml
     - Scripts/**/*
