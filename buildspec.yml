@@ -17,7 +17,11 @@ phases:
 artifacts:
   files:
     - app.js
-    - src/views/**/*
+    - src/*
+    - public/*
+    - config/*
+    - env/*
+    - package.json
     - build/**/*
     - appspec.yml
     - Scripts/**/*
