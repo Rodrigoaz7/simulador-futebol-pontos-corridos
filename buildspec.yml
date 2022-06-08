@@ -16,12 +16,4 @@ phases:
       - echo Build finalizado em `date`
 artifacts:
   files:
-    - app.js
-    - src/**/*
-    - public/**/*
-    - config/*
-    - env/*
-    - package.json
-    - build/**/*
-    - appspec.yml
-    - Scripts/**/*
+    - '**/*'
